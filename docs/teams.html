@@ -79,8 +79,28 @@
               </a>
             
               
+              <a class="source" href="groups-rest-tests.html">
+                groups-rest-tests.js
+              </a>
+            
+              
+              <a class="source" href="players-rest-tests.html">
+                players-rest-tests.js
+              </a>
+            
+              
               <a class="source" href="samples-rest-tests.html">
                 samples-rest-tests.js
+              </a>
+            
+              
+              <a class="source" href="trainers-rest-tests.html">
+                trainers-rest-tests.js
+              </a>
+            
+              
+              <a class="source" href="trainings-rest-tests.html">
+                trainings-rest-tests.js
               </a>
             
               
@@ -185,12 +205,15 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>), 
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>),
     Schema = mongoose.Schema;
 
 <span class="hljs-keyword">var</span> teamsSchema = <span class="hljs-keyword">new</span> Schema({
-    name          : <span class="hljs-built_in">String</span>, 
-	created       : <span class="hljs-built_in">Date</span>         
+    name : <span class="hljs-built_in">String</span>,
+    sport : <span class="hljs-built_in">String</span>,
+    groups : <span class="hljs-built_in">Array</span>,
+    trainer : <span class="hljs-built_in">String</span>,
+  	created : <span class="hljs-built_in">Date</span>
 });</pre></div></div>
             
         </li>
