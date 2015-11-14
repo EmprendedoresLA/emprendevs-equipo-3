@@ -13,8 +13,12 @@ var trainersSchema = new Schema({
     name : String,
     lastname : String,
     email : String,
-    estate : Boolean,
+    state : Boolean,
     role : String,
+    team : {
+      name : String,
+      sport : String
+    }
   	created : Date
 });
 

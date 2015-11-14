@@ -8,9 +8,9 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var playersSchema = new Schema({
+    username      : String,
     name          : String,
     lastname          : String,
-    user          : String,
     password          : String,
     state          : Boolean,
     role          : String,

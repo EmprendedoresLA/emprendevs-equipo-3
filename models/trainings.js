@@ -26,7 +26,7 @@ var trainingsSchema = new Schema({
     description : String,
     state : Boolean,
     groups : Array,
-    activites : Array,
+    activities : Array,
     coverage : Number,
 	  created : Date
 });
