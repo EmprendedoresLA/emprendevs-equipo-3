@@ -262,10 +262,10 @@ according to their roles</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>  <span class="hljs-comment">/* authorizers:start */</span>
-  adminAuth = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../auth/admin-auth.js'</span>),
+  trainerAuth = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../auth/trainer-auth.js'</span>),
   <span class="hljs-comment">/* authorizers:end */</span>
   <span class="hljs-comment">/* forms:start */</span>
-  adminLoginForm = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../forms/admin-login.js'</span>),
+  trainerLoginForm = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../forms/trainer-login.js'</span>),
   <span class="hljs-comment">/* forms:end */</span>
   restify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express-restify-mongoose'</span>),
   mongooseForms = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose-forms'</span>),
@@ -548,7 +548,7 @@ console.log(“E—&gt;”, errors);</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/admin'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
-    <span class="hljs-keyword">var</span> form = mongooseForms.Bridge(<span class="hljs-keyword">new</span> Admins(), <span class="hljs-keyword">new</span> adminLoginForm()).getForm();
+    <span class="hljs-keyword">var</span> form = mongooseForms.Bridge(<span class="hljs-keyword">new</span> Trainers(), <span class="hljs-keyword">new</span> trainerLoginForm()).getForm();
     <span class="hljs-keyword">var</span> formHTML = Handlebars.helpers.renderForm(form);
     res.render(<span class="hljs-string">'admin'</span>, { title: <span class="hljs-string">'Admin'</span>, section: <span class="hljs-string">'Admin'</span>, form: formHTML });
 });</pre></div></div>
@@ -651,7 +651,7 @@ console.log(“E—&gt;”, errors);</p>
             
             <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/admin/panel'</span>,
     <span class="hljs-comment">/* route:autorizers:start*/</span>
-    adminAuth.autorizer,
+    trainerAuth.autorizer,
     <span class="hljs-comment">/* route:autorizers:end */</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
     res.render(<span class="hljs-string">'admin-panel'</span>, { title: <span class="hljs-string">'anyandgo'</span>, section: <span class="hljs-string">'Admin Panel'</span> });
@@ -728,7 +728,7 @@ console.log(“E—&gt;”, errors);</p>
             <div class="content"><div class='highlight'><pre>restify.serve(app, Sample, {
   lowercase: <span class="hljs-literal">true</span>,
   lean: <span class="hljs-literal">false</span>,
-  prereq: adminAuth.rest.prereq,
+  prereq: trainerAuth.rest.prereq,
   contextFilter: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">model, req, cb</span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"context filter"</span>);
     cb(model);

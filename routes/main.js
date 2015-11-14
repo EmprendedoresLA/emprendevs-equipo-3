@@ -32,10 +32,10 @@ var app = module.parent.exports.app,
   // preventing not authenticated actors access to private parts
   // according to their roles
   /* authorizers:start */
-  adminAuth = require('../auth/admin-auth.js'),
+  trainerAuth = require('../auth/trainer-auth.js'),
   /* authorizers:end */
   /* forms:start */
-  adminLoginForm = require('../forms/admin-login.js'),
+  trainerLoginForm = require('../forms/trainer-login.js'),
   /* forms:end */
   restify = require('express-restify-mongoose'),
   mongooseForms = require('mongoose-forms'),
@@ -159,7 +159,7 @@ app.post('/contact', function (req, res, next) {
 
 // ### Admin Page
 app.get('/admin', function (req, res) {
-    var form = mongooseForms.Bridge(new Admins(), new adminLoginForm()).getForm();
+    var form = mongooseForms.Bridge(new Trainers(), new trainerLoginForm()).getForm();
     var formHTML = Handlebars.helpers.renderForm(form);
     res.render('admin', { title: 'Admin', section: 'Admin', form: formHTML });
 });
@@ -190,7 +190,7 @@ app.get('/admin/config', function (req, res) {
 // ### Panel
 app.get('/admin/panel',
     /* route:autorizers:start*/
-    adminAuth.autorizer,
+    trainerAuth.autorizer,
     /* route:autorizers:end */
     function (req, res) {
     res.render('admin-panel', { title: 'anyandgo', section: 'Admin Panel' });
@@ -220,7 +220,7 @@ if (config.cors && config.cors === "enabled") {
 restify.serve(app, Sample, {
   lowercase: true,
   lean: false,
-  prereq: adminAuth.rest.prereq,
+  prereq: trainerAuth.rest.prereq,
   contextFilter: function(model, req, cb) {
     console.log("context filter");
     cb(model);
