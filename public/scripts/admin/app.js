@@ -146,7 +146,29 @@ angular
         templateUrl: '/scripts/admin/views/calendar.html',
         controller: 'calendarCtrl'
       })
+      .when('/details', {
+        templateUrl: '/scripts/admin/views/details.html',
+        controller: 'detailsCtrl'
+      })
+      .when('/crud/details', {
+        templateUrl: '/scripts/admin/views/details.html',
+        controller: 'detailsCtrl'
+      })
+      .when('/crud/details-new', {
+        templateUrl: '/forms/details/create',
+        controller: 'detailsNewCtrl'
+      })
+      .when('/crud/details-edit/:id', {
+        templateUrl: '/forms/details/create',
+        controller: 'detailsEditCtrl',
+        resolve: {
+          details: function(Restangular, $route){
+            return Restangular.one('detailss', $route.current.params.id).get();
+          }
+        }
+      })
       .otherwise({
+
 
         redirectTo: '/'
       });

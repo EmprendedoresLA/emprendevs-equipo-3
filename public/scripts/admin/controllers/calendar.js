@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('anyandgoApp')
-.controller('calendarCtrl', function($scope, $compile, $timeout, uiCalendarConfig) {
+.controller('calendarCtrl', function($scope, $compile, $timeout, uiCalendarConfig, toastr,$location,$window) {
 
     var date = new Date();
     var d = date.getDate();
@@ -10,8 +10,9 @@ angular.module('anyandgoApp')
 
     /* event source that contains custom events on the scope */
     $scope.events=[];
+    // llamar a api que cargue los training
     $scope.events = [
-      {title: 'All Day Event',start: new Date(y, m, 1)},
+      {title: 'All Day Event',start: new Date(y, m, 1),time:"ds"},
       {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
       {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
       {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
@@ -36,11 +37,19 @@ angular.module('anyandgoApp')
     };
     /* alert on eventClick */
     $scope.alertOnEventClick = function( date, jsEvent, view){
-        $scope.alertMessage = (date.title + ' was clicked ');
+        console.log(date);
+
+        $window.location.href='#/details';
+
+
+        // Mostrar con un modal el detalle
     };
     /* alert on Drop */
      $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
-       $scope.alertMessage = ('Event Dropped to make dayDelta ' + delta);
+       // Mostar toaster que se cambio, y cambiarle el dia al entrenamiento
+       console.log(delta);
+       toastr.info('You have move a training')
+
     };
     /* alert on Resize */
     $scope.alertOnResize = function(event, delta, revertFunc, jsEvent, ui, view ){
@@ -60,6 +69,7 @@ angular.module('anyandgoApp')
       }
     };
     /* add custom event*/
+    // Add Training, call wizard page
     $scope.addEvent = function() {
       $scope.events.push({
         title: 'Open Sesame',
