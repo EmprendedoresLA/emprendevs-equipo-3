@@ -74,8 +74,28 @@
               </a>
             
               
+              <a class="source" href="groups-rest-tests.html">
+                groups-rest-tests.js
+              </a>
+            
+              
+              <a class="source" href="players-rest-tests.html">
+                players-rest-tests.js
+              </a>
+            
+              
               <a class="source" href="samples-rest-tests.html">
                 samples-rest-tests.js
+              </a>
+            
+              
+              <a class="source" href="trainers-rest-tests.html">
+                trainers-rest-tests.js
+              </a>
+            
+              
+              <a class="source" href="trainings-rest-tests.html">
+                trainings-rest-tests.js
               </a>
             
               
@@ -728,8 +748,7 @@ console.log(“E—&gt;”, errors);</p>
   postProcess: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>)</span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"post process"</span>);
   }
-});
-<span class="hljs-comment">/* rest:public:end */</span></pre></div></div>
+});</pre></div></div>
             
         </li>
         
@@ -740,10 +759,25 @@ console.log(“E—&gt;”, errors);</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
-              <h2 id="4-crud-forms">4. Crud Forms</h2>
-<hr>
+              <p>GET /api/v1/groups</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>restify.serve(app, group, {
+  lowercase: <span class="hljs-literal">true</span>,
+  lean: <span class="hljs-literal">false</span>,
+  prereq: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"pre req"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  },
+  contextFilter: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">model, req, cb</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"context filter"</span>);
+    cb(model);
+  },
+  postProcess: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"post process"</span>);
+  }
+});</pre></div></div>
             
         </li>
         
@@ -754,11 +788,25 @@ console.log(“E—&gt;”, errors);</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
-              <p><a href="https://github.com/oJshua/mongoose-forms">https://github.com/oJshua/mongoose-forms</a></p>
+              <p>GET /api/v1/players</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/forms/:modelname/create'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre>restify.serve(app, player, {
+  lowercase: <span class="hljs-literal">true</span>,
+  lean: <span class="hljs-literal">false</span>,
+  prereq: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"pre req"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  },
+  contextFilter: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">model, req, cb</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"context filter"</span>);
+    cb(model);
+  },
+  postProcess: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"post process"</span>);
+  }
+});</pre></div></div>
             
         </li>
         
@@ -768,6 +816,94 @@ console.log(“E—&gt;”, errors);</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>GET /api/v1/trainers</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>restify.serve(app, trainer, {
+  lowercase: <span class="hljs-literal">true</span>,
+  lean: <span class="hljs-literal">false</span>,
+  prereq: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"pre req"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  },
+  contextFilter: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">model, req, cb</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"context filter"</span>);
+    cb(model);
+  },
+  postProcess: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"post process"</span>);
+  }
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>GET /api/v1/trainings</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>restify.serve(app, training, {
+  lowercase: <span class="hljs-literal">true</span>,
+  lean: <span class="hljs-literal">false</span>,
+  prereq: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"pre req"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  },
+  contextFilter: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">model, req, cb</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"context filter"</span>);
+    cb(model);
+  },
+  postProcess: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"post process"</span>);
+  }
+});
+<span class="hljs-comment">/* rest:public:end */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <h2 id="4-crud-forms">4. Crud Forms</h2>
+<hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p><a href="https://github.com/oJshua/mongoose-forms">https://github.com/oJshua/mongoose-forms</a></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/forms/:modelname/create'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
               <p>mongooseForms.bindHelpers(Handlebars, ‘bootstrap’);</p>
 
@@ -788,11 +924,11 @@ console.log(“E—&gt;”, errors);</p>
         </li>
         
         
-        <li id="section-33">
+        <li id="section-37">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-33">&#182;</a>
+                <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
               <p>delete SampleForm.options.fields[“<strong>v”];
 SampleForm.options.maps[“</strong>v”] = false;</p>
@@ -820,11 +956,11 @@ SampleForm.options.maps[“</strong>v”] = false;</p>
         </li>
         
         
-        <li id="section-34">
+        <li id="section-38">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
+                <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
               <p>Override type with ngoform setting</p>
 
@@ -842,11 +978,11 @@ SampleForm.options.maps[“</strong>v”] = false;</p>
         </li>
         
         
-        <li id="section-35">
+        <li id="section-39">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-35">&#182;</a>
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <p>form.options.fields[“name”].template = ‘Lala’;</p>
 
@@ -874,11 +1010,11 @@ SampleForm.options.maps[“</strong>v”] = false;</p>
         </li>
         
         
-        <li id="section-36">
+        <li id="section-40">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-36">&#182;</a>
+                <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
               <p>var form = mongooseForms.Bridge(new Sample(), SampleForm).getForm();</p>
 
@@ -905,11 +1041,11 @@ app.get(<span class="hljs-string">'/forms/sample/edit'</span>, <span class="hljs
         </li>
         
         
-        <li id="section-37">
+        <li id="section-41">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-37">&#182;</a>
+                <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
               <h2 id="5-super-admin-tasks">5. Super Admin Tasks</h2>
 <hr>
@@ -919,11 +1055,11 @@ app.get(<span class="hljs-string">'/forms/sample/edit'</span>, <span class="hljs
         </li>
         
         
-        <li id="section-38">
+        <li id="section-42">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-38">&#182;</a>
+                <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
               
             </div>
@@ -941,11 +1077,11 @@ app.get(<span class="hljs-string">'/forms/sample/edit'</span>, <span class="hljs
         </li>
         
         
-        <li id="section-39">
+        <li id="section-43">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
+                <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
               <p>TODO: prevent auto-reboot when running with grunt, securitize mname parameter</p>
 
