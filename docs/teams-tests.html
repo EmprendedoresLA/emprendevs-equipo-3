@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>user-tests.js</title>
+  <title>teams-tests.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -79,28 +79,8 @@
               </a>
             
               
-              <a class="source" href="groups-rest-tests.html">
-                groups-rest-tests.js
-              </a>
-            
-              
-              <a class="source" href="players-rest-tests.html">
-                players-rest-tests.js
-              </a>
-            
-              
               <a class="source" href="samples-rest-tests.html">
                 samples-rest-tests.js
-              </a>
-            
-              
-              <a class="source" href="trainers-rest-tests.html">
-                trainers-rest-tests.js
-              </a>
-            
-              
-              <a class="source" href="trainings-rest-tests.html">
-                trainings-rest-tests.js
               </a>
             
               
@@ -161,7 +141,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>user-tests.js</h1>
+                  <h1>teams-tests.js</h1>
               </div>
           </li>
         
@@ -173,7 +153,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h2 id="user-test-cases">User Test Cases</h2>
+              <h2 id="teams-test-cases">teams Test Cases</h2>
 
             </div>
             
@@ -235,7 +215,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> User, user;</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> teams, teams;</pre></div></div>
             
         </li>
         
@@ -250,7 +230,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'Model Test User'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'Model Test teams'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
     before(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</pre></div></div>
             
         </li>
@@ -266,10 +246,10 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        User = <span class="hljs-built_in">require</span>(<span class="hljs-string">"../../../models/user.js"</span>);
+            <div class="content"><div class='highlight'><pre>        teams = <span class="hljs-built_in">require</span>(<span class="hljs-string">"../../../models/teams.js"</span>);
     });
 
-    describe(<span class="hljs-string">'User'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</pre></div></div>
+    describe(<span class="hljs-string">'teams'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</pre></div></div>
             
         </li>
         
@@ -284,22 +264,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        it(<span class="hljs-string">'add a user'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>)</span>{
-            user = <span class="hljs-keyword">new</span> User({ name: <span class="hljs-string">'user'</span>+<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-number">1</span>)});
-            user.save(done);
-        });
-
-        it(<span class="hljs-string">'authenticate user'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>)</span>{
-            user = <span class="hljs-keyword">new</span> User({ 
-                email:<span class="hljs-string">'user@user.com'</span>, 
-                password: <span class="hljs-string">'123456'</span>,
-                name: <span class="hljs-string">'user'</span>+<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-number">1</span>)});
-            user.save(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, doc</span>)</span>{
-                assert.ok(doc.authenticate(<span class="hljs-string">"123456"</span>), <span class="hljs-string">"Authenticatoin should return true"</span>);
-                assert.ok(!doc.authenticate(<span class="hljs-string">"inconrrect"</span>), <span class="hljs-string">"Authentication should return false"</span>);
-                user = doc;
-                done();
-            });
+            <div class="content"><div class='highlight'><pre>        it(<span class="hljs-string">'add a teams'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>)</span>{
+            teams = <span class="hljs-keyword">new</span> teams({ name: <span class="hljs-string">'teams'</span>+<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-number">1</span>)});
+            teams.save(done);
         });
 
     });

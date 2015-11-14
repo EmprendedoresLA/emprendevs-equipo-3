@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>user-tests.js</title>
+  <title>teams.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -79,28 +79,8 @@
               </a>
             
               
-              <a class="source" href="groups-rest-tests.html">
-                groups-rest-tests.js
-              </a>
-            
-              
-              <a class="source" href="players-rest-tests.html">
-                players-rest-tests.js
-              </a>
-            
-              
               <a class="source" href="samples-rest-tests.html">
                 samples-rest-tests.js
-              </a>
-            
-              
-              <a class="source" href="trainers-rest-tests.html">
-                trainers-rest-tests.js
-              </a>
-            
-              
-              <a class="source" href="trainings-rest-tests.html">
-                trainings-rest-tests.js
               </a>
             
               
@@ -161,7 +141,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>user-tests.js</h1>
+                  <h1>teams.js</h1>
               </div>
           </li>
         
@@ -173,7 +153,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h2 id="user-test-cases">User Test Cases</h2>
+              <h2 id="teams-model">teams Model</h2>
 
             </div>
             
@@ -200,12 +180,18 @@
               </div>
               <p>Modules Dependencies:</p>
 <ul>
-<li>Assert (<a href="http://nodejs.org/api/assert.html">http://nodejs.org/api/assert.html</a>)</li>
+<li>Mongoose (<a href="http://mongoosejs.com/docs/guide.html">http://mongoosejs.com/docs/guide.html</a>)</li>
 </ul>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">'assert'</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>), 
+    Schema = mongoose.Schema;
+
+<span class="hljs-keyword">var</span> teamsSchema = <span class="hljs-keyword">new</span> Schema({
+    name          : <span class="hljs-built_in">String</span>, 
+	created       : <span class="hljs-built_in">Date</span>         
+});</pre></div></div>
             
         </li>
         
@@ -216,11 +202,16 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>Require basic config files and DB connection</p>
+              <h3 id="hooks">Hooks</h3>
+<h4 id="pre-save">Pre-Save</h4>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../../utils/dbconnect'</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>teamsSchema.pre(<span class="hljs-string">"save"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">next</span>) </span>{
+    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.created)
+        <span class="hljs-keyword">this</span>.created = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+    next();
+});</pre></div></div>
             
         </li>
         
@@ -231,11 +222,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>Global Variables for the test case</p>
+              <h3 id="method-">Method:</h3>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> User, user;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>teamsSchema.method(<span class="hljs-string">"instanceMethod"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">param, cb</span>) </span>{
+    <span class="hljs-keyword">var</span> teams = <span class="hljs-keyword">this</span>;
+    <span class="hljs-keyword">this</span>.save(cb);
+});</pre></div></div>
             
         </li>
         
@@ -246,12 +240,16 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Unit Tests</p>
+              <h3 id="static-">Static:</h3>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'Model Test User'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    before(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre>teamsSchema.statics.customMethod = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">paramid, cb</span>) </span>{
+  <span class="hljs-keyword">var</span> teams = <span class="hljs-keyword">this</span>;
+  teams.findOne({ _id: paramid}, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, teams</span>)</span>{
+      cb(err, teams);
+  });
+}</pre></div></div>
             
         </li>
         
@@ -262,48 +260,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Before all tests</p>
+              <p>Export module</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        User = <span class="hljs-built_in">require</span>(<span class="hljs-string">"../../../models/user.js"</span>);
-    });
-
-    describe(<span class="hljs-string">'User'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-8">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
-              </div>
-              <p>It show create a new document in the database</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        it(<span class="hljs-string">'add a user'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>)</span>{
-            user = <span class="hljs-keyword">new</span> User({ name: <span class="hljs-string">'user'</span>+<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-number">1</span>)});
-            user.save(done);
-        });
-
-        it(<span class="hljs-string">'authenticate user'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>)</span>{
-            user = <span class="hljs-keyword">new</span> User({ 
-                email:<span class="hljs-string">'user@user.com'</span>, 
-                password: <span class="hljs-string">'123456'</span>,
-                name: <span class="hljs-string">'user'</span>+<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-number">1</span>)});
-            user.save(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, doc</span>)</span>{
-                assert.ok(doc.authenticate(<span class="hljs-string">"123456"</span>), <span class="hljs-string">"Authenticatoin should return true"</span>);
-                assert.ok(!doc.authenticate(<span class="hljs-string">"inconrrect"</span>), <span class="hljs-string">"Authentication should return false"</span>);
-                user = doc;
-                done();
-            });
-        });
-
-    });
-});</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = mongoose.model(<span class="hljs-string">'teams'</span>, teamsSchema);</pre></div></div>
             
         </li>
         
