@@ -23,7 +23,7 @@ $(document).ready(function(){
       var ho = 0;
       var h = $(window).height() - ho;
       env = findBootstrapEnvironment();
-      
+
       $('#side-col, #content-col').css({
           'height': h+'px',
           'top': ho+'px'
@@ -92,7 +92,9 @@ angular
     'adf.widget.clock',
     'adf.widget.weather',
     'cfp.hotkeys',
-    'restangular'
+    'restangular',
+    'ui.calendar',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider, $locationProvider, RestangularProvider, hotkeysProvider, toastrConfig) {
 
@@ -140,18 +142,22 @@ angular
           }
         }
       })
+      .when('/calendar', {
+        templateUrl: '/scripts/admin/views/calendar.html',
+        controller: 'calendarCtrl'
+      })
       .otherwise({
 
         redirectTo: '/'
       });
-      
+
       RestangularProvider.setBaseUrl('/api/v1');
       RestangularProvider.setRestangularFields({
         id: '_id'
       });
-      
+
       RestangularProvider.setRequestInterceptor(function(elem, operation, what) {
-        
+
         if (operation === 'put') {
           elem._id = undefined;
           return elem;
@@ -162,7 +168,7 @@ angular
       angular.extend(toastrConfig, {
         autoDismiss: false,
         containerId: 'toast-container',
-        maxOpened: 0,    
+        maxOpened: 0,
         newestOnTop: true,
         positionClass: 'toast-bottom-right',
         preventDuplicates: false,
@@ -187,7 +193,7 @@ angular
         console.log('$routeChangeStart');
         //show loading gif
         $timeout(function(){
-          $rootScope.layout.loading = true;          
+          $rootScope.layout.loading = true;
         });
     });
     $rootScope.$on('$routeChangeSuccess', function () {
@@ -208,4 +214,3 @@ angular
     }
 
   });
-
