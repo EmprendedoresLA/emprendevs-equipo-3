@@ -29,6 +29,11 @@
               </a>
             
               
+              <a class="source" href="trainers.html">
+                trainers.js
+              </a>
+            
+              
               <a class="source" href="user.html">
                 user.js
               </a>
@@ -76,6 +81,11 @@
               
               <a class="source" href="sample-tests.html">
                 sample-tests.js
+              </a>
+            
+              
+              <a class="source" href="trainers-tests.html">
+                trainers-tests.js
               </a>
             
               
@@ -162,6 +172,7 @@
             <div class="content"><div class='highlight'><pre>  Sample  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/sample.js'</span>),
   Admins  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/admins.js'</span>),
   User  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/user.js'</span>),
+  Trainers  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/trainers.js'</span>),
   <span class="hljs-comment">/* models:end */</span></pre></div></div>
             
         </li>
@@ -209,6 +220,7 @@ according to their roles</p>
   <span class="hljs-comment">/* models:registration:start */</span>
   anyandgo.models[<span class="hljs-string">'sample'</span>]  = Sample;
   anyandgo.models[<span class="hljs-string">'user'</span>]  = User;
+  anyandgo.models[<span class="hljs-string">'trainers'</span>]  = Trainers;
   <span class="hljs-comment">/* models:registration:end */</span></pre></div></div>
             
         </li>
@@ -424,13 +436,15 @@ console.log(“E—&gt;”, errors);</p>
         res.redirect(<span class="hljs-string">'/contact'</span>);
     } <span class="hljs-keyword">else</span> {
         mail.sendFromTemplate(<span class="hljs-string">'./mailstemplates/contact.hbs'</span>, {
+            siteurl: config.mail.templatesdomain,
             name: req.body.name,
             message: req.body.message,
+            subject: <span class="hljs-string">'[anyandgo] Web Contact'</span>,
             email: req.body.email
         }, {
             from: config.mail.auth.user, 
             to: config.mail.contact,
-            subject: <span class="hljs-string">'anyandgo'</span>,
+            subject: <span class="hljs-string">'[anyandgo] Web Contact'</span>,
             text: msg+<span class="hljs-string">' Sent from anyandgo'</span>
         }, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response</span>)</span>{
            <span class="hljs-keyword">if</span> ( error ) {
@@ -480,8 +494,7 @@ console.log(“E—&gt;”, errors);</p>
             
             <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/docs'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
     res.render(<span class="hljs-string">'docs'</span>, { title: <span class="hljs-string">'Docs'</span>, section: <span class="hljs-string">'Docs'</span> });
-});
-<span class="hljs-comment">/* page:public:end */</span></pre></div></div>
+});</pre></div></div>
             
         </li>
         
@@ -492,10 +505,14 @@ console.log(“E—&gt;”, errors);</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
-              <h2 id="2-admin-routes">2. Admin Routes</h2>
-<hr>
+              <h3 id="user-page">User Page</h3>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/user'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
+    res.render(<span class="hljs-string">'user'</span>, { title: <span class="hljs-string">'User'</span>, section: <span class="hljs-string">'User'</span> });
+});
+<span class="hljs-comment">/* page:public:end */</span></pre></div></div>
             
         </li>
         
@@ -505,6 +522,20 @@ console.log(“E—&gt;”, errors);</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <h2 id="2-admin-routes">2. Admin Routes</h2>
+<hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <h3 id="login">Login</h3>
 
@@ -517,11 +548,11 @@ console.log(“E—&gt;”, errors);</p>
         </li>
         
         
-        <li id="section-22">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <h3 id="panel">Panel</h3>
 
@@ -534,11 +565,11 @@ console.log(“E—&gt;”, errors);</p>
         </li>
         
         
-        <li id="section-23">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <h3 id="panel">Panel</h3>
 
@@ -555,27 +586,14 @@ console.log(“E—&gt;”, errors);</p>
         </li>
         
         
-        <li id="section-24">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
-              </div>
-              <h2 id="3-public-rest">3. Public Rest</h2>
-<hr>
-
-            </div>
-            
-        </li>
-        
-        
         <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
-              <p><a href="https://github.com/florianholzapfel/express-restify-mongoose">https://github.com/florianholzapfel/express-restify-mongoose</a></p>
+              <h2 id="3-public-rest">3. Public Rest</h2>
+<hr>
 
             </div>
             
@@ -587,6 +605,19 @@ console.log(“E—&gt;”, errors);</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p><a href="https://github.com/florianholzapfel/express-restify-mongoose">https://github.com/florianholzapfel/express-restify-mongoose</a></p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>CORS Interceptors</p>
 
@@ -610,11 +641,11 @@ console.log(“E—&gt;”, errors);</p>
         </li>
         
         
-        <li id="section-27">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>GET /api/v1/samples</p>
 
@@ -636,11 +667,11 @@ console.log(“E—&gt;”, errors);</p>
         </li>
         
         
-        <li id="section-28">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>GET /api/v1/users</p>
 
@@ -666,11 +697,11 @@ console.log(“E—&gt;”, errors);</p>
         </li>
         
         
-        <li id="section-29">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <h2 id="4-crud-forms">4. Crud Forms</h2>
 <hr>
@@ -680,11 +711,11 @@ console.log(“E—&gt;”, errors);</p>
         </li>
         
         
-        <li id="section-30">
+        <li id="section-31">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
+                <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
               <p><a href="https://github.com/oJshua/mongoose-forms">https://github.com/oJshua/mongoose-forms</a></p>
 
@@ -695,11 +726,11 @@ console.log(“E—&gt;”, errors);</p>
         </li>
         
         
-        <li id="section-31">
+        <li id="section-32">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-31">&#182;</a>
+                <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
               <p>mongooseForms.bindHelpers(Handlebars, ‘bootstrap’);</p>
 
@@ -720,11 +751,11 @@ console.log(“E—&gt;”, errors);</p>
         </li>
         
         
-        <li id="section-32">
+        <li id="section-33">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-32">&#182;</a>
+                <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
               <p>delete SampleForm.options.fields[“<strong>v”];
 SampleForm.options.maps[“</strong>v”] = false;</p>
@@ -752,11 +783,11 @@ SampleForm.options.maps[“</strong>v”] = false;</p>
         </li>
         
         
-        <li id="section-33">
+        <li id="section-34">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-33">&#182;</a>
+                <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
               <p>Override type with ngoform setting</p>
 
@@ -774,11 +805,11 @@ SampleForm.options.maps[“</strong>v”] = false;</p>
         </li>
         
         
-        <li id="section-34">
+        <li id="section-35">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
+                <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
               <p>form.options.fields[“name”].template = ‘Lala’;</p>
 
@@ -806,11 +837,11 @@ SampleForm.options.maps[“</strong>v”] = false;</p>
         </li>
         
         
-        <li id="section-35">
+        <li id="section-36">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-35">&#182;</a>
+                <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
               <p>var form = mongooseForms.Bridge(new Sample(), SampleForm).getForm();</p>
 
@@ -837,11 +868,11 @@ app.get(<span class="hljs-string">'/forms/sample/edit'</span>, <span class="hljs
         </li>
         
         
-        <li id="section-36">
+        <li id="section-37">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-36">&#182;</a>
+                <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
               <h2 id="5-super-admin-tasks">5. Super Admin Tasks</h2>
 <hr>
@@ -851,11 +882,11 @@ app.get(<span class="hljs-string">'/forms/sample/edit'</span>, <span class="hljs
         </li>
         
         
-        <li id="section-37">
+        <li id="section-38">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-37">&#182;</a>
+                <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
               
             </div>
@@ -873,11 +904,11 @@ app.get(<span class="hljs-string">'/forms/sample/edit'</span>, <span class="hljs
         </li>
         
         
-        <li id="section-38">
+        <li id="section-39">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-38">&#182;</a>
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <p>TODO: prevent auto-reboot when running with grunt, securitize mname parameter</p>
 
