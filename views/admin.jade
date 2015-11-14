@@ -10,10 +10,10 @@ block content
       - }
       //Card
       .card.card-container.animated(class=classAnimation,style="background-color: #000;color: #ccc;")
-        img#profile-img.profile-img-card(src='./img/anyandgo-logo-circle-2.png')
+        img#profile-img.profile-img-card(src="./img/logos/logo-chico.png")
         p#profile-name.profile-name-card
           i.fa.fa-lock(style="padding-right: 10px")
-          | Admin Panel
+          | Log In
           - if(errors !== "") {
             .alert.alert-danger.animated.tada(role="alert")
               span #{__(errors)}
@@ -27,7 +27,7 @@ block content
                 i.fa.fa-sign-in(style="padding-right:10px")
                 | #{__("Login")}
             p
-              .well.well-sm(style="background-color: #0B0B0B;") Hint: admin@anyandgo.com / 123456
+              .well.well-sm(style="background-color: #0B0B0B;") Hint: coach@boostall.com / 123456
             .form-group.grp-foot.hide
               .col-md-6(style="padding:0 10px 0 10px;")
                 label.checkbox-inline(for="rec")
