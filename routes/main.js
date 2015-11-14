@@ -32,10 +32,10 @@ var app = module.parent.exports.app,
   // preventing not authenticated actors access to private parts
   // according to their roles
   /* authorizers:start */
-  adminAuth = require('../auth/admin-auth.js'),
+  trainerAuth = require('../auth/trainer-auth.js'),
   /* authorizers:end */
   /* forms:start */
-  adminLoginForm = require('../forms/admin-login.js'),
+  trainerLoginForm = require('../forms/trainer-login.js'),
   /* forms:end */
   restify = require('express-restify-mongoose'),
   mongooseForms = require('mongoose-forms'),
@@ -158,10 +158,10 @@ app.post('/contact', function (req, res, next) {
 });
 
 // ### Admin Page
-app.get('/admin', function (req, res) {
-    var form = mongooseForms.Bridge(new Admins(), new adminLoginForm()).getForm();
+app.get('/trainer', function (req, res) {
+    var form = mongooseForms.Bridge(new Trainers(), new trainerLoginForm()).getForm();
     var formHTML = Handlebars.helpers.renderForm(form);
-    res.render('admin', { title: 'Admin', section: 'Admin', form: formHTML });
+    res.render('trainer', { title: 'Trainer', section: 'Trainer', form: formHTML });
 });
 
 // ### Docs Page
@@ -178,22 +178,22 @@ app.get('/user', function (req, res) {
 // ## 2. Admin Routes
 // --------------------------------------
 // ### Login
-app.get('/admin', function (req, res) {
-    res.render('admin-index', { title: 'anyandgo', section: 'Admin Login' });
+app.get('/trainer', function (req, res) {
+    res.render('trainer-index', { title: 'boostall', section: 'Trainer Login' });
 });
 
 // ### Panel
-app.get('/admin/config', function (req, res) {
-    res.render('admin-config', { title: 'anyandgo', section: 'Admin Panel' });
+app.get('/trainer/config', function (req, res) {
+    res.render('trainer-config', { title: 'boostall', section: 'Trainer Panel' });
 });
 
 // ### Panel
-app.get('/admin/panel',
+app.get('/trainer/panel',
     /* route:autorizers:start*/
-    adminAuth.autorizer,
+    trainerAuth.autorizer,
     /* route:autorizers:end */
     function (req, res) {
-    res.render('admin-panel', { title: 'anyandgo', section: 'Admin Panel' });
+    res.render('trainer-panel', { title: 'boostall', section: 'Trainer Panel' });
 });
 
 // ## 3. Public Rest
@@ -220,7 +220,7 @@ if (config.cors && config.cors === "enabled") {
 restify.serve(app, Sample, {
   lowercase: true,
   lean: false,
-  prereq: adminAuth.rest.prereq,
+  prereq: trainerAuth.rest.prereq,
   contextFilter: function(model, req, cb) {
     console.log("context filter");
     cb(model);

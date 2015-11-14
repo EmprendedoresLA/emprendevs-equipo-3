@@ -6,7 +6,7 @@ var app = module.parent.exports.app,
 
 // Auth Strategies
 /* authorizers:start */
-var adminAuth = require('../auth/admin-auth.js');
+var trainerAuth = require('../auth/trainer-auth.js');
 var userAuth = require('../auth/user-auth.js');
 /* authorizers:end */
 
@@ -14,9 +14,9 @@ var userAuth = require('../auth/user-auth.js');
 
 // Local Strategy
 // [Passport Local](https://github.com/jaredhanson/passport-local)
-app.post('/admin',
-  passport.authenticate('administrators', { successRedirect: '/admin/panel',
-                                    failureRedirect: '/admin',
+app.post('/trainer',
+  passport.authenticate('trainers', { successRedirect: '/trainer/panel',
+                                    failureRedirect: '/trainer',
                                     failureFlash: true})
 );
 
@@ -28,7 +28,7 @@ app.post('/user',
 
 // Facebook Routes
 // [Passport Facebook](https://github.com/jaredhanson/passport-facebook)
-if(typeof config.auth.facebook !== "undefined" 
+if(typeof config.auth.facebook !== "undefined"
     //&& config.auth.facebook.enabled
     && config.auth.facebook.clientid.length) {
 app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
