@@ -1,4 +1,4 @@
-// # Site Routes 
+// # Site Routes
 // --------------------------------------
 // contains all the routes of the site including pages, and rest api services.
 //
@@ -25,11 +25,11 @@ var app = module.parent.exports.app,
   Trainers  = require('../models/trainers.js'),
 
   Groups  = require('../models/groups.js'),
-  teams  = require('../models/teams.js'),
+  Teams  = require('../models/teams.js'),
   /* models:end */
   // ### Authorizers
   // Mantain certains part from the application secure
-  // preventing not authenticated actors access to private parts 
+  // preventing not authenticated actors access to private parts
   // according to their roles
   /* authorizers:start */
   adminAuth = require('../auth/admin-auth.js'),
@@ -51,7 +51,7 @@ var app = module.parent.exports.app,
   anyandgo.models['trainings']  = Trainings;
   anyandgo.models['trainers']  = Trainers;
   anyandgo.models['groups']  = Groups;
-  anyandgo.models['teams']  = teams;
+  anyandgo.models['teams']  = Teams;
   /* models:registration:end */
 
 
@@ -66,7 +66,7 @@ app.get('/', function (req, res) {
 });
 
 /* page:public:start */
-  
+
 // ### Contact Page
 app.get('/contact', function (req, res) {
     var recaptcha = "";
@@ -139,7 +139,7 @@ app.post('/contact', function (req, res, next) {
             subject: '[anyandgo] Web Contact',
             email: req.body.email
         }, {
-            from: config.mail.auth.user, 
+            from: config.mail.auth.user,
             to: config.mail.contact,
             subject: '[anyandgo] Web Contact',
             text: msg+' Sent from anyandgo'
@@ -188,7 +188,7 @@ app.get('/admin/config', function (req, res) {
 });
 
 // ### Panel
-app.get('/admin/panel', 
+app.get('/admin/panel',
     /* route:autorizers:start*/
     adminAuth.autorizer,
     /* route:autorizers:end */
@@ -248,7 +248,7 @@ restify.serve(app, User, {
 });
 
 // GET /api/v1/groups
-restify.serve(app, group, {
+restify.serve(app, Groups, {
   lowercase: true,
   lean: false,
   prereq: function(req) {
@@ -265,7 +265,7 @@ restify.serve(app, group, {
 });
 
 // GET /api/v1/players
-restify.serve(app, player, {
+restify.serve(app, Players, {
   lowercase: true,
   lean: false,
   prereq: function(req) {
@@ -282,7 +282,7 @@ restify.serve(app, player, {
 });
 
 // GET /api/v1/trainers
-restify.serve(app, trainer, {
+restify.serve(app, Trainers, {
   lowercase: true,
   lean: false,
   prereq: function(req) {
@@ -299,7 +299,7 @@ restify.serve(app, trainer, {
 });
 
 // GET /api/v1/trainings
-restify.serve(app, training, {
+restify.serve(app, Trainings, {
   lowercase: true,
   lean: false,
   prereq: function(req) {
@@ -316,7 +316,7 @@ restify.serve(app, training, {
 });
 
 // GET /api/v1/teams
-restify.serve(app, team, {
+restify.serve(app, Teams, {
   lowercase: true,
   lean: false,
   prereq: function(req) {
@@ -348,9 +348,9 @@ app.get('/forms/:modelname/create', function (req, res) {
     var SampleForm = mongooseForms.Form(anyandgo.models[req.params.modelname]);
     /*
     SampleForm = SampleForm.eachField(function(field, name){
-        console.log(">>", field, name);    
+        console.log(">>", field, name);
         if(name == "__v"){
-           field.mapped = false;    
+           field.mapped = false;
            console.log("->", field);
         }
         field.buttons = [{ sample: "lala"}];
@@ -370,11 +370,11 @@ app.get('/forms/:modelname/create', function (req, res) {
           form = _form;
         },
         getForm: function() {
-          
+
           form.eachMappedField(function(field, path) {
-            field.value = model[path]; 
-            field.ngmodel = req.params.modelname; 
-            field.formname = "myForm"; 
+            field.value = model[path];
+            field.ngmodel = req.params.modelname;
+            field.formname = "myForm";
             // Override type with ngoform setting
             if ( field.type.options.ngoform ) {
                 field.type.instance = field.type.options.ngoform.control;
@@ -390,8 +390,8 @@ app.get('/forms/:modelname/create', function (req, res) {
           return form;
         },
         getModel: function() {
-          
-          form.eachMappedField(function(field, path) {      
+
+          form.eachMappedField(function(field, path) {
             model[path] = field.value;
           });
 
@@ -405,7 +405,7 @@ app.get('/forms/:modelname/create', function (req, res) {
     var form = ngBridge(new anyandgo.models[req.params.modelname](), SampleForm).getForm();
     //var form = mongooseForms.Bridge(new Sample(), SampleForm).getForm();
     var formHTMl = Handlebars.helpers.renderForm(form);
-    
+
     console.log(formHTMl);
     res.render('forms', { title: 'anyandgo', section: 'Form', form: formHTMl, mname: req.params.modelname });
 });
@@ -416,7 +416,7 @@ app.get('/forms/sample/edit', function (req, res) {
     Sample.findOne({}, function(err, doc){
         var form = mongooseForms.Bridge(doc, SampleForm).getForm();
         var formHTMl = Handlebars.helpers.renderForm(form);
-    
+
         console.log(formHTMl);
         res.render('forms', { title: 'anyandgo', section: 'Form', form: formHTMl });
     });
@@ -441,4 +441,3 @@ app.get('/tasks/create/model/:mname', function (req, res) {
     });
 });
 */
-

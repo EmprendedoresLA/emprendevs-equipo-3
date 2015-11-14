@@ -19,9 +19,9 @@ module.exports.Players = [
         name : "River Plate - Primera División",
         sport : "futbol",
         trainer : "Marcelo Gallardo"
-      }
-      groups          : [],
-  	  created       : "2015-11-13T09:03:59 +03:00"
+      }//,
+      //groups          : [],
+  	  //created       : "2015-11-13T09:03:59 +03:00"
   },
   {
       username      : "gmercado",
@@ -41,9 +41,9 @@ module.exports.Players = [
         name : "River Plate - Primera División",
         sport : "futbol",
         trainer : "Marcelo Gallardo"
-      }
-      groups          : [],
-  	  created       : "2015-11-13T09:03:59 +03:00"
+      }//,
+      //groups          : [],
+  	  //created       : "2015-11-13T09:03:59 +03:00"
   },
   {
       username      : "jmaidana",
@@ -63,9 +63,9 @@ module.exports.Players = [
         name : "River Plate - Primera División",
         sport : "futbol",
         trainer : "Marcelo Gallardo"
-      }
-      groups          : [],
-      created       : "2015-11-13T09:03:59 +03:00"
+      }//,
+      //groups          : [],
+      //created       : "2015-11-13T09:03:59 +03:00"
   },
   {
       username      : "ebalanta",
@@ -85,9 +85,9 @@ module.exports.Players = [
         name : "River Plate - Primera División",
         sport : "futbol",
         trainer : "Marcelo Gallardo"
-      }
-      groups          : [],
-      created       : "2015-11-13T09:03:59 +03:00"
+      }//,
+      //groups          : [],
+      //created       : "2015-11-13T09:03:59 +03:00"
   },
   {
       username      : "lvangioni",
@@ -107,9 +107,9 @@ module.exports.Players = [
         name : "River Plate - Primera División",
         sport : "futbol",
         trainer : "Marcelo Gallardo"
-      }
-      groups          : [],
-      created       : "2015-11-13T09:03:59 +03:00"
+      }//,
+      //groups          : [],
+      //created       : "2015-11-13T09:03:59 +03:00"
   },
   {
       username      : "csanchez",
@@ -129,9 +129,9 @@ module.exports.Players = [
         name : "River Plate - Primera División",
         sport : "futbol",
         trainer : "Marcelo Gallardo"
-      }
-      groups          : [],
-      created       : "2015-11-13T09:03:59 +03:00"
+      }//,
+      //groups          : [],
+      //created       : "2015-11-13T09:03:59 +03:00"
   },
   {
       username      : "mkranevitter",
@@ -151,9 +151,9 @@ module.exports.Players = [
         name : "River Plate - Primera División",
         sport : "futbol",
         trainer : "Marcelo Gallardo"
-      }
-      groups          : [],
-      created       : "2015-11-13T09:03:59 +03:00"
+      }//,
+      //groups          : [],
+      //created       : "2015-11-13T09:03:59 +03:00"
   },
   {
       username      : "nbertolo",
@@ -173,9 +173,9 @@ module.exports.Players = [
         name : "River Plate - Primera División",
         sport : "futbol",
         trainer : "Marcelo Gallardo"
-      }
-      groups          : [],
-      created       : "2015-11-13T09:03:59 +03:00"
+      }//,
+      //groups          : [],
+      //created       : "2015-11-13T09:03:59 +03:00"
   },
   {
       username      : "lpiscu",
@@ -195,9 +195,9 @@ module.exports.Players = [
         name : "River Plate - Primera División",
         sport : "futbol",
         trainer : "Marcelo Gallardo"
-      }
-      groups          : [],
-      created       : "2015-11-13T09:03:59 +03:00"
+      }//,
+      //groups          : [],
+      //created       : "2015-11-13T09:03:59 +03:00"
   },
   {
       username      : "rmora",
@@ -217,9 +217,9 @@ module.exports.Players = [
         name : "River Plate - Primera División",
         sport : "futbol",
         trainer : "Marcelo Gallardo"
-      }
-      groups          : [],
-      created       : "2015-11-13T09:03:59 +03:00"
+      }//,
+      //groups          : [],
+      //created       : "2015-11-13T09:03:59 +03:00"
   },
   {
       username      : "lalario",
@@ -239,8 +239,8 @@ module.exports.Players = [
         name : "River Plate - Primera División",
         sport : "futbol",
         trainer : "Marcelo Gallardo"
-      }
-      groups          : [],
-      created       : "2015-11-13T09:03:59 +03:00"
+      }//,
+      //groups          : [],
+      //created       : "2015-11-13T09:03:59 +03:00"
   }
 ];
