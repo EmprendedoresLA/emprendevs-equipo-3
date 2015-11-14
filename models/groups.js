@@ -11,7 +11,7 @@ var groupsSchema = new Schema({
     players : Array,
     trainings : Array,
     name : String,
-    description : String, 
+    description : String,
   	created : Date
 });
 

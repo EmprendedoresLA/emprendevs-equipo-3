@@ -242,7 +242,7 @@
   Trainers  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/trainers.js'</span>),
 
   Groups  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/groups.js'</span>),
-  teams  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/teams.js'</span>),
+  Teams  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/teams.js'</span>),
   <span class="hljs-comment">/* models:end */</span></pre></div></div>
             
         </li>
@@ -256,7 +256,7 @@
               </div>
               <h3 id="authorizers">Authorizers</h3>
 <p>Mantain certains part from the application secure
-preventing not authenticated actors access to private parts 
+preventing not authenticated actors access to private parts
 according to their roles</p>
 
             </div>
@@ -294,7 +294,7 @@ according to their roles</p>
   anyandgo.models[<span class="hljs-string">'trainings'</span>]  = Trainings;
   anyandgo.models[<span class="hljs-string">'trainers'</span>]  = Trainers;
   anyandgo.models[<span class="hljs-string">'groups'</span>]  = Groups;
-  anyandgo.models[<span class="hljs-string">'teams'</span>]  = teams;
+  anyandgo.models[<span class="hljs-string">'teams'</span>]  = Teams;
   <span class="hljs-comment">/* models:registration:end */</span></pre></div></div>
             
         </li>
@@ -516,7 +516,7 @@ console.log(“E—&gt;”, errors);</p>
             subject: <span class="hljs-string">'[anyandgo] Web Contact'</span>,
             email: req.body.email
         }, {
-            from: config.mail.auth.user, 
+            from: config.mail.auth.user,
             to: config.mail.contact,
             subject: <span class="hljs-string">'[anyandgo] Web Contact'</span>,
             text: msg+<span class="hljs-string">' Sent from anyandgo'</span>
@@ -649,7 +649,7 @@ console.log(“E—&gt;”, errors);</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/admin/panel'</span>, 
+            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/admin/panel'</span>,
     <span class="hljs-comment">/* route:autorizers:start*/</span>
     adminAuth.autorizer,
     <span class="hljs-comment">/* route:autorizers:end */</span>
@@ -780,7 +780,7 @@ console.log(“E—&gt;”, errors);</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>restify.serve(app, group, {
+            <div class="content"><div class='highlight'><pre>restify.serve(app, Groups, {
   lowercase: <span class="hljs-literal">true</span>,
   lean: <span class="hljs-literal">false</span>,
   prereq: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
@@ -809,7 +809,7 @@ console.log(“E—&gt;”, errors);</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>restify.serve(app, player, {
+            <div class="content"><div class='highlight'><pre>restify.serve(app, Players, {
   lowercase: <span class="hljs-literal">true</span>,
   lean: <span class="hljs-literal">false</span>,
   prereq: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
@@ -838,7 +838,7 @@ console.log(“E—&gt;”, errors);</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>restify.serve(app, trainer, {
+            <div class="content"><div class='highlight'><pre>restify.serve(app, Trainers, {
   lowercase: <span class="hljs-literal">true</span>,
   lean: <span class="hljs-literal">false</span>,
   prereq: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
@@ -867,7 +867,7 @@ console.log(“E—&gt;”, errors);</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>restify.serve(app, training, {
+            <div class="content"><div class='highlight'><pre>restify.serve(app, Trainings, {
   lowercase: <span class="hljs-literal">true</span>,
   lean: <span class="hljs-literal">false</span>,
   prereq: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
@@ -896,7 +896,7 @@ console.log(“E—&gt;”, errors);</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>restify.serve(app, team, {
+            <div class="content"><div class='highlight'><pre>restify.serve(app, Teams, {
   lowercase: <span class="hljs-literal">true</span>,
   lean: <span class="hljs-literal">false</span>,
   prereq: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
@@ -958,9 +958,9 @@ console.log(“E—&gt;”, errors);</p>
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> SampleForm = mongooseForms.Form(anyandgo.models[req.params.modelname]);
     <span class="hljs-comment">/*
     SampleForm = SampleForm.eachField(function(field, name){
-        console.log("&gt;&gt;", field, name);    
+        console.log("&gt;&gt;", field, name);
         if(name == "__v"){
-           field.mapped = false;    
+           field.mapped = false;
            console.log("-&gt;", field);
         }
         field.buttons = [{ sample: "lala"}];
@@ -993,10 +993,10 @@ SampleForm.options.maps[“</strong>v”] = false;</p>
           form = _form;
         },
         getForm: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-          
+
           form.eachMappedField(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">field, path</span>) </span>{
-            field.value = model[path]; 
-            field.ngmodel = req.params.modelname; 
+            field.value = model[path];
+            field.ngmodel = req.params.modelname;
             field.formname = <span class="hljs-string">"myForm"</span>;</pre></div></div>
             
         </li>
@@ -1039,8 +1039,8 @@ SampleForm.options.maps[“</strong>v”] = false;</p>
           <span class="hljs-keyword">return</span> form;
         },
         getModel: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-          
-          form.eachMappedField(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">field, path</span>) </span>{      
+
+          form.eachMappedField(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">field, path</span>) </span>{
             model[path] = field.value;
           });
 
@@ -1067,7 +1067,7 @@ SampleForm.options.maps[“</strong>v”] = false;</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> formHTMl = Handlebars.helpers.renderForm(form);
-    
+
     <span class="hljs-built_in">console</span>.log(formHTMl);
     res.render(<span class="hljs-string">'forms'</span>, { title: <span class="hljs-string">'anyandgo'</span>, section: <span class="hljs-string">'Form'</span>, form: formHTMl, mname: req.params.modelname });
 });
@@ -1078,7 +1078,7 @@ app.get(<span class="hljs-string">'/forms/sample/edit'</span>, <span class="hljs
     Sample.findOne({}, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, doc</span>)</span>{
         <span class="hljs-keyword">var</span> form = mongooseForms.Bridge(doc, SampleForm).getForm();
         <span class="hljs-keyword">var</span> formHTMl = Handlebars.helpers.renderForm(form);
-    
+
         <span class="hljs-built_in">console</span>.log(formHTMl);
         res.render(<span class="hljs-string">'forms'</span>, { title: <span class="hljs-string">'anyandgo'</span>, section: <span class="hljs-string">'Form'</span>, form: formHTMl });
     });

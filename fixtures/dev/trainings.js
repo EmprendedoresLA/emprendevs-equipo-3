@@ -4,7 +4,7 @@ module.exports.Trainings = [
   {
     title: "Warming",
     time: "09:00 PM",
-    date: "20/11/2015",
+    date: "11/20/2015",
     description: "Warmup before main training",
     state: true,
     groups: [],
@@ -26,7 +26,7 @@ module.exports.Trainings = [
   {
     title: "Warming",
     time: "15:00 PM",
-    date: "21/11/2015",
+    date: "11/20/2015",
     description: "Warmup before main training",
     state: true,
     groups: [],

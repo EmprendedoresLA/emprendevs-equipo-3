@@ -211,7 +211,8 @@
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 
 <span class="hljs-keyword">var</span> trainersSchema = <span class="hljs-keyword">new</span> Schema({
     username : <span class="hljs-built_in">String</span>,
@@ -219,8 +220,12 @@
     name : <span class="hljs-built_in">String</span>,
     lastname : <span class="hljs-built_in">String</span>,
     email : <span class="hljs-built_in">String</span>,
-    estate : <span class="hljs-built_in">Boolean</span>,
+    state : <span class="hljs-built_in">Boolean</span>,
     role : <span class="hljs-built_in">String</span>,
+    team : {
+      name : <span class="hljs-built_in">String</span>,
+      sport : <span class="hljs-built_in">String</span>
+    },
   	created : <span class="hljs-built_in">Date</span>
 });</pre></div></div>
             

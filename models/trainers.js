@@ -5,7 +5,8 @@
 //  - Mongoose (http://mongoosejs.com/docs/guide.html)
 //
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    crypto = require('crypto');
 
 var trainersSchema = new Schema({
     username : String,
@@ -18,7 +19,7 @@ var trainersSchema = new Schema({
     team : {
       name : String,
       sport : String
-    }
+    },
   	created : Date
 });
 

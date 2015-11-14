@@ -211,12 +211,13 @@
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 
 <span class="hljs-keyword">var</span> playersSchema = <span class="hljs-keyword">new</span> Schema({
+    username      : <span class="hljs-built_in">String</span>,
     name          : <span class="hljs-built_in">String</span>,
     lastname          : <span class="hljs-built_in">String</span>,
-    user          : <span class="hljs-built_in">String</span>,
     password          : <span class="hljs-built_in">String</span>,
     state          : <span class="hljs-built_in">Boolean</span>,
     role          : <span class="hljs-built_in">String</span>,
