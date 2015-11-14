@@ -21,6 +21,9 @@ var app = module.parent.exports.app,
   Admins  = require('../models/admins.js'),
   User  = require('../models/user.js'),
   Players  = require('../models/players.js'),
+  Trainings  = require('../models/trainings.js'),
+  Trainers  = require('../models/trainers.js'),
+
   /* models:end */
   // ### Authorizers
   // Mantain certains part from the application secure
@@ -43,10 +46,9 @@ var app = module.parent.exports.app,
   anyandgo.models['sample']  = Sample;
   anyandgo.models['user']  = User;
   anyandgo.models['players']  = Players;
-  anyandgo.models['players']  = Players;
+  anyandgo.models['trainings']  = Trainings;
+  anyandgo.models['trainers']  = Trainers;
   /* models:registration:end */
-
-
 
 
 // ## 1. Public Routes
