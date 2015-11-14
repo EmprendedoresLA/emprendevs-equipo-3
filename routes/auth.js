@@ -14,9 +14,9 @@ var userAuth = require('../auth/user-auth.js');
 
 // Local Strategy
 // [Passport Local](https://github.com/jaredhanson/passport-local)
-app.post('/admin',
-  passport.authenticate('trainers', { successRedirect: '/admin/panel',
-                                    failureRedirect: '/admin',
+app.post('/trainer',
+  passport.authenticate('trainers', { successRedirect: '/trainer/panel',
+                                    failureRedirect: '/trainer',
                                     failureFlash: true})
 );
 

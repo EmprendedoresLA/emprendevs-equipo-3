@@ -4,7 +4,7 @@ var Trainer  = require('../models/trainers.js');
 module.exports = function() {
   return forms.Form(Trainer, {
     method: 'post',
-    action: '/admin',
+    action: '/trainer',
     maps: ['username', 'password'],
     fields: {
       username: {
