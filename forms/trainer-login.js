@@ -1,14 +1,14 @@
 var forms = require('mongoose-forms');
-var Admin  = require('../models/admins.js');
+var Trainer  = require('../models/trainers.js');
 
 module.exports = function() {
-  return forms.Form(Admin, {
+  return forms.Form(Trainer, {
     method: 'post',
-    action: '/admin',
-    maps: ['email', 'password'],
+    action: '/trainer',
+    maps: ['username', 'password'],
     fields: {
-      email: {
-        formname: "loginForm"    
+      username: {
+        formname: "loginForm"
       },
       password: {
         template: 'Password',
