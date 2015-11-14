@@ -25,6 +25,7 @@ var app = module.parent.exports.app,
   Trainers  = require('../models/trainers.js'),
 
   Groups  = require('../models/groups.js'),
+  teams  = require('../models/teams.js'),
   /* models:end */
   // ### Authorizers
   // Mantain certains part from the application secure
@@ -50,7 +51,9 @@ var app = module.parent.exports.app,
   anyandgo.models['trainings']  = Trainings;
   anyandgo.models['trainers']  = Trainers;
   anyandgo.models['groups']  = Groups;
+  anyandgo.models['teams']  = teams;
   /* models:registration:end */
+
 
 
 

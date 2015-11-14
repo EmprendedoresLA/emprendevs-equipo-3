@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>connection.js</title>
+  <title>teams-tests.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -141,7 +141,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>connection.js</h1>
+                  <h1>teams-tests.js</h1>
               </div>
           </li>
         
@@ -153,7 +153,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h2 id="database-connection">Database Connection</h2>
+              <h2 id="teams-test-cases">teams Test Cases</h2>
 
             </div>
             
@@ -178,12 +178,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>Require basic config files and DB connection</p>
+              <p>Modules Dependencies:</p>
+<ul>
+<li>Assert (<a href="http://nodejs.org/api/assert.html">http://nodejs.org/api/assert.html</a>)</li>
+</ul>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../../config'</span>),
-    utils = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../../utils'</span>)</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">'assert'</span>);</pre></div></div>
             
         </li>
         
@@ -194,11 +196,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>Database Connection</p>
+              <p>Require basic config files and DB connection</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> dbConex = exports.dbConex = utils.dbConnection(config.db.domain,config.db.name,config.db.user,config.db.pass);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../../utils/dbconnect'</span>);</pre></div></div>
             
         </li>
         
@@ -213,7 +215,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> mongoose, Admin, dbConex;</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> teams, teams;</pre></div></div>
             
         </li>
         
@@ -228,7 +230,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'Database Test'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'Model Test teams'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
     before(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</pre></div></div>
             
         </li>
@@ -244,14 +246,10 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
-        Admin = mongoose.mongo.Admin;
+            <div class="content"><div class='highlight'><pre>        teams = <span class="hljs-built_in">require</span>(<span class="hljs-string">"../../../models/teams.js"</span>);
     });
 
-    describe(<span class="hljs-string">'MongoDB'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-        it(<span class="hljs-string">'Should be up and running'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>)</span>{
-            connection = mongoose.createConnection(utils.dbConnectionString(config.db.domain,config.db.name,config.db.user,config.db.pass));
-            connection.on(<span class="hljs-string">'open'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div></div>
+    describe(<span class="hljs-string">'teams'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</pre></div></div>
             
         </li>
         
@@ -262,34 +260,15 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>connection established</p>
+              <p>It show create a new document in the database</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">new</span> Admin(connection.db).listDatabases(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, result</span>) </span>{
-                    <span class="hljs-keyword">if</span>(!err){</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-9">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-9">&#182;</a>
-              </div>
-              <p>database list stored in result.databases</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>                        <span class="hljs-keyword">var</span> allDatabases = result.databases;    
-                        done();
-                    } <span class="hljs-keyword">else</span> {
-                       <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Unable to list DB'</span>);
-                    } 
-                });
-            });
+            <div class="content"><div class='highlight'><pre>        it(<span class="hljs-string">'add a teams'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>)</span>{
+            teams = <span class="hljs-keyword">new</span> teams({ name: <span class="hljs-string">'teams'</span>+<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-number">1</span>)});
+            teams.save(done);
         });
+
     });
 });</pre></div></div>
             
