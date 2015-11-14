@@ -8,9 +8,9 @@ nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
         span.icon-bar
       a.navbar-brand.hammerfont(href='/')
         span(style="display:inline-block;")
-          img(src="./img/anyandgo-logo-circle-2.png", style="display:inline-block;height:30px;")
+        img(src="/img/logos/logo-chico.png", style="display:inline-block;height:30px;")
         span(style="display:inline-block;padding-left:10px;")
-        | anyandgo
+        | BoostAll
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
         li(class=((path=='/')?"active":""))
@@ -18,29 +18,11 @@ nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
             i.fa.fa-home(style='padding-right:10px') 
             | Home
         // public:page:menu:start
-        li(class=((path=='/docs')?"active":""))
-          a(href='/docs')
-            i.fa.fa-book(style='padding-right:10px') 
-            | Docs
+        li(class=((path=='/admin')?"active":""))
+          a(href='/admin')
+            i.fa.fa-user(style='padding-right:10px') 
+            | Coach
         // public:page:menu:end
-        li.dropdown
-          a.dropdown-toggle(href='#', data-toggle='dropdown')
-            i.fa.fa-plus(style='padding-right:10px') 
-            | #{__("More")}
-            span.caret(style='margin-left:10px')
-          ul.dropdown-menu.dropdown-menu-bubble-left.mond-lang-change(role='menu')
-            li
-              a(href='/admin')
-                i.fa.fa-user(style='padding-right:10px') 
-                | Admin
-            li
-              a(href='/user')
-                i.fa.fa-users(style='padding-right:10px') 
-                | Users
-            li
-              a(href='/contact')
-                i.fa.fa-envelope-o(style='padding-right:10px') 
-                | Contact
       ul.nav.navbar-nav.navbar-right
         //li.hide.github-btn-con(style="max-height:45px;overflow:hidden;")
           a.github-button(href='https://github.com/cortezcristian/anyandgo', data-icon='octicon-star', data-style='mega', data-count-href='/cortezcristian/anyandgo/stargazers', data-count-api='/repos/cortezcristian/anyandgo#stargazers_count', data-count-aria-label='# stargazers on GitHub', aria-label='Star cortezcristian/anyandgo on GitHub') Star
