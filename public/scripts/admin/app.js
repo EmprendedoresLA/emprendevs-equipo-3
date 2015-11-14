@@ -105,8 +105,8 @@ angular
     //$locationProvider.html5Mode(true).hashPrefix('!');
     $routeProvider
       .when('/', {
-        templateUrl: '/scripts/admin/views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: '/scripts/admin/views/calendar.html',
+        controller: 'calendarCtrl'
       })
       .when('/crud/sample', {
         templateUrl: '/scripts/admin/views/sample.html',
@@ -142,10 +142,6 @@ angular
           }
         }
       })
-      .when('/calendar', {
-        templateUrl: '/scripts/admin/views/calendar.html',
-        controller: 'calendarCtrl'
-      })
       .when('/details', {
         templateUrl: '/scripts/admin/views/details.html',
         controller: 'detailsCtrl'
@@ -168,8 +164,6 @@ angular
         }
       })
       .otherwise({
-
-
         redirectTo: '/'
       });
 
