@@ -16,11 +16,11 @@ angular.module('anyandgoApp')
       email: player.email.$modelValue,
       phone: player.phone.$modelValue,
       height: player.height.$modelValue,
-      weight: player.weight.$modelValue 
+      weight: player.weight.$modelValue
     };
     Restangular.all('players').post($scope.player).then(function(player) {
       $window.location.href='#/players';
-      toastr.info('You add a new Player');
+      toastr.info('You added a new Player');
     });
   }
 });
