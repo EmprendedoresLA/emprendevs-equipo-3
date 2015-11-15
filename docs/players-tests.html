@@ -272,9 +272,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>        Players = <span class="hljs-built_in">require</span>(<span class="hljs-string">"../../../models/players.js"</span>);
-    });
-
-    describe(<span class="hljs-string">'Players'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</pre></div></div>
+    });</pre></div></div>
             
         </li>
         
@@ -285,17 +283,29 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>It show create a new document in the database</p>
+              <p>describe(‘Players’, function(){
+It show create a new document in the database
+  it(‘add a players’, function(done){
+    players = new Players({ name: ‘players’+Math.floor((Math.random() * 10) + 1)});
+  players.save(done);
+});</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        it(<span class="hljs-string">'add a players'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>)</span>{
-            players = <span class="hljs-keyword">new</span> Players({ name: <span class="hljs-string">'players'</span>+<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-number">1</span>)});
-            players.save(done);
-        });
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>});</p>
 
-    });
-});</pre></div></div>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>});</pre></div></div>
             
         </li>
         
