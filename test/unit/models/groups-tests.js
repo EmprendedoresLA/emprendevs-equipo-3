@@ -20,10 +20,10 @@ describe('Model Test Groups', function(){
 
     describe('Groups', function(){
         // It show create a new document in the database
-        it('add a groups', function(done){
-            groups = new Groups({ name: 'groups'+Math.floor((Math.random() * 10) + 1)});
-            groups.save(done);
-        });
+        // it('add a groups', function(done){
+        //     groups = new Groups({ name: 'groups'+Math.floor((Math.random() * 10) + 1)});
+        //     groups.save(done);
+        // });
 
     });
 });

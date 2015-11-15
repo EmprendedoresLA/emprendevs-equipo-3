@@ -21,8 +21,7 @@ var mongoose = require('mongoose'),
 // -----------------------------
 var trainingsSchema = new Schema({
     title : String,
-    time : String,
-    date : Date,
+    datetime : Date,
     description : String,
     state : Boolean,
     groups : Array,
