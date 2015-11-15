@@ -31,6 +31,7 @@
     "animate.css": "~3.4.0",
     "angular-youtube-mb": "~1.1.0",
     "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.6.0",
-    "angular-ui-calendar": "~1.0.1"
+    "angular-ui-calendar": "~1.0.1",
+    "jquery-ui": "jqueryui#~1.11.4"
   }
 }

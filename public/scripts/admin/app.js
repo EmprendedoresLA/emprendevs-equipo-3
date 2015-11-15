@@ -169,6 +169,23 @@ angular
           }
         }
       })
+      .when('/players', {
+        templateUrl: '/scripts/admin/views/player.html',
+        controller: 'playerCtrl'
+      })
+      .when('/crud/player-new', {
+        templateUrl: '/scripts/admin/views/player-new.html',
+        controller: 'playerNewCtrl'
+      })
+      .when('/crud/player-edit/:id', {
+        templateUrl: '/scripts/admin/views/player-edit.html',
+        controller: 'playerEditCtrl',
+        resolve: {
+          player: function(Restangular, $route){
+            return Restangular.one('players', $route.current.params.id).get();
+          }
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });

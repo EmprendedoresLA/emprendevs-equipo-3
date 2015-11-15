@@ -47,6 +47,7 @@ html(lang='en',ng-app="anyandgoApp")
     - }
     block css
       link(rel='stylesheet', href='/css/bootstrap.min.css')
+      link(rel='stylesheet', href='/css/agency.css')
       link(rel='stylesheet', href='/css/style.css')
     block js
       - if(settings.envflag !== "production") {
@@ -70,7 +71,10 @@ html(lang='en',ng-app="anyandgoApp")
       - }
 
   body.container-fluid
-    include ./partials/site-menu
+    - if (title != 'Trainer'){
+      include ./partials/site-menu
+    -}else
+      include ./partials/site-menu-login
     block content
     block footer
       include ./partials/site-footer
@@ -107,6 +111,7 @@ html(lang='en',ng-app="anyandgoApp")
     script(src='/components/moment/moment.js')
     script(src='/components/fullcalendar/dist/fullcalendar.js')
     script(src='/components/angular-ui-calendar/src/calendar.js')
+    script(src='/components/jquery-ui/jquery-ui.js')
     //endbower
     //-<!-- endbuild -->
     - } else {
@@ -124,6 +129,13 @@ html(lang='en',ng-app="anyandgoApp")
     script(src='/scripts/site/directives/langsupport.js')
     script(src='/scripts/site/directives/metismenu.js')
     script(src='/scripts/site/directives/hero.js')
+
+    script(src='scripts/site/landings/cbpAnimatedHeader.js')
+    script(src='scripts/site/landings/jqBootstrapValidation.js')
+    script(src='scripts/site/landings/contact_me.js')
+    script(src='scripts/site/landings/agency.js')
+    script(src='scripts/site/landings/classie.js')
+
     //site:app:scripts:end
     //-<!-- endbuild -->
     - } else {

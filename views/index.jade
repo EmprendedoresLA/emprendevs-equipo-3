@@ -1,67 +1,237 @@
 extends layout
 
 block content
-  .row
-    .neck
-      #main-carousel.carousel.carousel-bg.slide(data-ride='carousel', data-interval="30000", hero)
-        // Indicators
-        ol.carousel-indicators
-          li.active(data-target='#main-carousel', data-slide-to='0')
-          li(data-target='#main-carousel', data-slide-to='1')
-        
-        // Wrapper for slides
-        .carousel-inner(role='listbox')
-          .item.active
-            .carousel-caption(data-animation="animated flipInY")
-              h2(data-animation="animated bounceInDown") #{__("Get Ready")}
-              p.text-center
-                span.text-center(data-animation="animated zoomInRight")
-                  img(src="img/logos/anyandgo-eq-mean.png",style="max-width: 400px;")
-          .item
-            .carousel-caption(data-animation="animated flipInY")
-              h2(data-animation="animated flip") #{__("Innovate")}
-              p
-                span(data-animation="animated rotateIn")  $ [sudo] npm install anyandgo-cli
-                span(data-animation="animated rollIn")  $ anyandgo init my-new-project 
-        
-        // Controls
-        a.left.carousel-control(href='#main-carousel', role='button', data-slide='prev')
-          span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
-          span.sr-only Previous
-        a.right.carousel-control(href='#main-carousel', role='button', data-slide='next')
-          span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
-          span.sr-only Next
-      
-  .row.our-main-content
-    .col-sm-10.col-sm-offset-1
-          
-          .col-sm-8
-            .thumbnail
-              .caption
-                h3 #{__("Install anyandgo")}  
-                pre
-                  code.language-bash $ [sudo] npm install -g anyandgo-cli 
-
-                h3 Create a new project 
-                pre
-                  code.language-bash 
-                  | $ anyandgo init mynewproject
-                  |    You have successfully created the anyandgo project
-                  |    Try:
-                  |         cd mynewproject
-                  |         npm install && bower install && grunt
-                h3 #{__("MEAN Framework")}  
-                div(style="min-height: 100px; width: 100%;")
-                  p Anyandgo let you create blazing fast, scalable web applications using MongoDB, Express, Node.JS and AngularJS. 
-                  a.btn.btn-default(href='/docs', role='button')
-                    i.fa.fa-book(style="padding-right:10px")
-                    | #{__("Read Docs")}
-      
-          .col-sm-4
-            .thumbnail
-              a.hide(href,ng-click="openVideoModal('vF9NKt2UXDU')")
-                img(src='http://img.youtube.com/vi/vF9NKt2UXDU/mqdefault.jpg', alt='video',style="width:700px;height: 170px;")
-              .caption
-                h3 #{__("Components")}
-                  //include components
-
+  link(href='css/agency.css', rel='stylesheet')
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+  link(href='https://fonts.googleapis.com/css?family=Kaushan+Script', rel='stylesheet', type='text/css')
+  link(href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic', rel='stylesheet', type='text/css')
+  link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', rel='stylesheet', type='text/css')
+  header
+    .container
+      div#intro
+        .intro-text
+          .intro-heading It's Nice To Train You
+          .intro-lead-in Improve your team with just a few clicks
+  // Services
+  section#services
+    .container
+      .row
+        .col-lg-12.text-center
+          h2.section-heading Services
+          h3.section-subheading.text-muted What is it that makes you choose us?
+      .row.text-center
+        .col-md-6
+          span.fa-stack.fa-4x
+            i.fa.fa-circle.FontAwesome.fa-stack-2x.text-primary
+            i.fa.fa-users.fa-stack-1x.fa-inverse
+          h4.service-heading Team Management
+          p.text-muted
+            | Create and organize your team the way you want it so you can take it to the top and compete against the best.
+        .col-md-6
+          span.fa-stack.fa-4x
+            i.fa.fa-circle.FontAwesome.fa-stack-2x.text-primary
+            i.fa.fa-calendar.fa-stack-1x.fa-inverse
+          h4.service-heading Routine Management
+          p.text-muted
+            | Keep track of the activities assigned to the team to achieve higher performance and become the best in what you do.
+  // Qualities
+  section#qualities
+    .container
+      .row
+        .col-lg-12.text-center
+          h2.section-heading Qualities
+          h3.section-subheading.text-muted What makes us special?
+      .row.text-center
+        .col-md-4
+          span.fa-stack.fa-4x
+            i.fa.fa-circle.FontAwesome.fa-stack-2x.text-primary
+            i.fa.fa-smile-o.fa-stack-1x.fa-inverse
+          h4.service-heading User Friendly
+          p.text-muted Simple and intuitive interface for the user community.
+        .col-md-4
+          span.fa-stack.fa-4x
+            i.fa.fa-circle.FontAwesome.fa-stack-2x.text-primary
+            i.fa.fa-desktop.fa-stack-1x.fa-inverse
+          h4.service-heading Responsive Design
+          p.text-muted For all devices.
+        .col-md-4
+          span.fa-stack.fa-4x
+            i.fa.fa-circle.FontAwesome.fa-stack-2x.text-primary
+            i.fa.fa-lock.fa-stack-1x.fa-inverse
+          h4.service-heading Web Security
+          p.text-muted We guarantee the security and data integrity.
+  // Team
+  section#team.bg-light-gray
+    .container
+      .row
+        .col-lg-12.text-center
+          h2.section-heading Our Amazing Team
+          h3.section-subheading.text-muted All for one and one for all.
+      .row
+        .col-sm-4
+          .team-member
+            img.img-responsive.img-circle(src='./img/landing/team/emilio.jpg', alt='')
+            h4 Emilio Guisolfo
+            p.text-muted Full Stack
+            ul.list-inline.social-buttons
+              li
+                a(href='https://twitter.com/emilioguisolfo')
+                  i.fa.fa-twitter
+              li
+                a(href='https://www.facebook.com/emilio.guisolfo')
+                  i.fa.fa-facebook
+              li
+                a(href='https://www.linkedin.com/profile/view?id=AAkAABrWr7ABZGwPN_gU-ZmzZi1dJTDqY3VIsMI&authType=NAME_SEARCH&authToken=E0ik&locale=es_ES&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A450277296%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1447562276272%2Ctas%3Aemi')
+                  i.fa.fa-linkedin
+        .col-sm-4
+          .team-member
+            img.img-responsive.img-circle(src='./img/landing/team/nacho.jpg', alt='')
+            h4 Ignacio Preda
+            p.text-muted Full Stack
+            ul.list-inline.social-buttons
+              li
+                a(href='#')
+                  i.fa.fa-twitter
+              li
+                a(href='https://www.facebook.com/ignaciopreda')
+                  i.fa.fa-facebook
+              li
+                a(href='https://www.linkedin.com/profile/view?id=AAkAAA8mydcBW7d5QMwDuyGHNCpPzXCMRFa0ORk&authType=NAME_SEARCH&authToken=nEuq&locale=es_ES&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A254200279%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1447562025932%2Ctas%3Aign')
+                  i.fa.fa-linkedin
+        .col-sm-4
+          .team-member
+            img.img-responsive.img-circle(src='./img/landing/team/jaco.jpg', alt='')
+            h4 Jacobo Dominguez
+            p.text-muted Full Stack
+            ul.list-inline.social-buttons
+              li
+                a(href='https://twitter.com/jacodom')
+                  i.fa.fa-twitter
+              li
+                a(href='https://www.facebook.com/jacodom')
+                  i.fa.fa-facebook
+              li
+                a(href='https://www.linkedin.com/profile/view?id=AAEAAA8e2W0BssSqPCL4O3mvi0ygIQEbTyPWu1Q&authType=name&authToken=c9nS&trk=prof-sb-browse_map-name')
+                  i.fa.fa-linkedin
+      .container
+        .col-sm-6
+          .team-member
+            img.img-responsive.img-circle(src='./img/landing/team/noel.jpg', alt='')
+            h4 Noel Cantoia
+            p.text-muted Full Stack
+            ul.list-inline.social-buttons
+              li
+                a(href='https://twitter.com/NoeCantoia')
+                  i.fa.fa-twitter
+              li
+                a(href='https://www.facebook.com/noel.cantoia')
+                  i.fa.fa-facebook
+              li
+                a(href='https://www.linkedin.com/profile/view?id=AAkAABszeaMB58H9juRfiuAmpokSZ65hEpJqBAk&authType=NAME_SEARCH&authToken=hDT4&locale=es_ES&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A456358307%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1447562346477%2Ctas%3Anoel%20cantoia')
+                  i.fa.fa-linkedin
+        .col-sm-6
+          .team-member
+            img.img-responsive.img-circle(src='./img/landing/team/pablo.jpg', alt='')
+            h4 Pablo Cordoba
+            p.text-muted Full Stack
+            ul.list-inline.social-buttons
+              li
+                a(href='https://twitter.com/pablo_tico')
+                  i.fa.fa-twitter
+              li
+                a(href='#')
+                  i.fa.fa-facebook
+              li
+                a(href='https://www.linkedin.com/profile/view?id=AAkAABtkuasBiwnou94ClA4_KgEIZjpIYycyVWM&authType=NAME_SEARCH&authToken=-BlX&locale=es_ES&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A459585963%2CauthType%3ANAME_SEARCH%2Cidx%3A1-2-2%2CtarId%3A1447562129950%2Ctas%3Apabl')
+                  i.fa.fa-linkedin
+      .row
+        .col-lg-8.col-lg-offset-2.text-center
+          p.large.text-muted
+            | A group of friends from Rosario, future systems engineers at UAI, passionate about new technologies with a proactive attitude towards learning.
+  // Clients
+  aside.clients
+    .container
+      .row
+        .col-md-1.col-sm-6
+          a(href='#')
+            a
+              img.img-responsive.img-circle(src='./img/landing/technologies/mongo.jpg', height='150px', width='150px', alt='')
+        .col-md-1.col-sm-6
+          a(href='#')
+            a
+              img.img-responsive.img-circle(src='./img/landing/technologies/angular.jpg', height='150px', width='150px', alt='')
+        .col-md-1.col-sm-6
+          a(href='#')
+            a
+              img.img-responsive.img-circle(src='./img/landing/technologies/node.jpg', height='150px', width='150px', alt='')
+        .col-md-1.col-sm-6
+          a(href='#')
+            a
+              img.img-responsive.img-circle(src='./img/landing/technologies/anyandgo.jpg', height='150px', width='150px', alt='')
+        .col-md-1.col-sm-6
+          a(href='#')
+            a
+              img.img-responsive.img-circle(src='./img/landing/technologies/Git.jpg', height='150px', width='150px', alt='')
+        .col-md-1.col-sm-6
+          a(href='#')
+            a
+              img.img-responsive.img-circle(src='./img/landing/technologies/Yeoman.jpg', height='150px', width='150px', alt='')
+        .col-md-1.col-sm-6
+          a(href='#')
+            a
+              img.img-responsive.img-circle(src='./img/landing/technologies/Bootstrap.jpg', height='150px', width='150px', alt='')
+        .col-md-1.col-sm-6
+          a(href='#')
+            a
+              img.img-responsive.img-circle(src='./img/landing/technologies/css.jpg', height='150px', width='150px', alt='')
+        .col-md-1.col-sm-6
+          a(href='#')
+            a
+              img.img-responsive.img-circle(src='./img/landing/technologies/html.jpg', height='150px', width='150px', alt='')
+        .col-md-1.col-sm-6
+          a(href='#')
+            a
+              img.img-responsive.img-circle(src='./img/landing/technologies/Bower.jpg', height='150px', width='150px', alt='')
+        .col-md-1.col-sm-6
+          a(href='#')
+            a
+              img.img-responsive.img-circle(src='./img/landing/technologies/npm.jpg', height='150px', width='150px', alt='')
+        .col-md-1.col-sm-6
+          a(href='#')
+            a
+              img.img-responsive.img-circle(src='./img/landing/technologies/grunt-logo.jpg', height='150px', width='150px', alt='')
+  // Contact
+  section#contact
+    .container
+      .row
+        .col-lg-12.text-center
+          h2.section-heading Contact Us
+      .row
+        .col-lg-12
+          form#contactForm(name='sentMessage', novalidate='')
+            .row
+              .col-md-6
+                .form-group
+                  input#name.form-control(type='text', placeholder='Your Name *', required='', data-validation-required-message='Please enter your name.')
+                  p.help-block.text-danger
+                .form-group
+                  input#email.form-control(type='email', placeholder='Your Email *', required='', data-validation-required-message='Please enter your email address.')
+                  p.help-block.text-danger
+                .form-group
+                  input#phone.form-control(type='tel', placeholder='Your Phone *', required='', data-validation-required-message='Please enter your phone number.')
+                  p.help-block.text-danger
+              .col-md-6
+                .form-group
+                  textarea#message.form-control(placeholder='Your Message *', required='', data-validation-required-message='Please enter a message.')
+                  p.help-block.text-danger
+              .clearfix
+              .col-lg-12.text-center
+                #success
+                button.btn.btn-xl(type='submit')
+                  i.fa.fa-paper-plane
+                  |  Send Message
+  footer
+    .container
+      .row
+        .col-md-4
+          span.copyright Copyright © BoostAll 2015
