@@ -1,11 +1,11 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-8 col-md-offset-2">
-      <form  class="formNewP" name="newPlayer" ng-submit="save(newPlayer)" novalidate>
+      <form  class="formNewP" name="newPlayer" ng-submit="save()" novalidate>
               <!-- Input name -->
               <div class="form-group" ng-class="{'has-error': newPlayer.name.$invalid && newPlayer.$dirty }">
                 <label class="text" for="name">Name</label>
-              <input type="text" id="name" name="name" ng-model="s" class="form-control" placeholder="Name..."  minlength="3" required />
+              <input type="text" id="name" name="name" ng-model="player.name" class="form-control" placeholder="Name..."  minlength="3" required />
                 <div class="validation text-danger"
                        ng-messages="newPlayer.name.$error"
                        ng-if="newPlayer.name.$touched || newPlayer.$submitted">
@@ -16,7 +16,7 @@
               <!-- Input lastname -->
               <div class="form-group" ng-class="{'has-error': newPlayer.lastname.$invalid && newPlayer.$dirty }">
                 <label for="lastname">Last name</label>
-              <input type="text" id="lastname" name="lastname" ng-model="l" class="form-control" placeholder="Last name..."  minlength="3" required />
+              <input type="text" id="lastname" name="lastname" ng-model="player.lastname" class="form-control" placeholder="Last name..."  minlength="3" required />
                 <div class="validation text-danger"
                        ng-messages="newPlayer.lastname.$error"
                        ng-if="newPlayer.lastname.$touched || newPlayer.$submitted">
@@ -27,7 +27,7 @@
               <!-- Input mail -->
               <div class="form-group" ng-class="{'has-error': newPlayer.email.$invalid && newPlayer.$dirty }">
               <label for="email">Email</label>
-              <input type="email" name="email" ng-model="m" class="form-control" placeholder="Mail..." required />
+              <input type="email" name="email" ng-model="player.email" class="form-control" placeholder="Mail..." required />
                 <div class="validation text-danger"
                        ng-messages="newPlayer.email.$error"
                        ng-if="newPlayer.email.$touched || newPlayer.$submitted">
@@ -37,7 +37,7 @@
               <!-- Input phone -->
               <div class="form-group" ng-class="{'has-error': newPlayer.phone.$invalid && newPlayer.$dirty }">
                 <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" ng-model="p" class="form-control" placeholder="Phone..."  required />
+              <input type="tel" id="phone" name="phone" ng-model="player.phone" class="form-control" placeholder="Phone..."  required />
                 <div class="validation text-danger"
                        ng-messages="newPlayer.phone.$error"
                        ng-if="newPlayer.phone.$touched || newPlayer.$submitted">
@@ -47,7 +47,7 @@
               <!-- Input height -->
               <div class="form-group" ng-class="{'has-error': newPlayer.height.$invalid && newPlayer.$dirty }">
                 <label for="height">Height</label>
-              <input type="number" id="height" name="height" ng-model="h" class="form-control" placeholder="Height..." required />
+              <input type="number" id="height" name="height" ng-model="player.height" class="form-control" placeholder="Height..." required />
                 <div class="validation text-danger"
                        ng-messages="newPlayer.height.$error"
                        ng-if="newPlayer.height.$touched || newPlayer.$submitted">
@@ -57,16 +57,18 @@
               <!-- Input weight -->
               <div class="form-group" ng-class="{'has-error': newPlayer.weight.$invalid && newPlayer.$dirty }">
                 <label for="weight">Weight</label>
-              <input type="number" id="weight" name="weight" ng-model="w" class="form-control" placeholder="Weight..." required />
+              <input type="number" id="weight" name="weight" ng-model="player.weight" class="form-control" placeholder="Weight..." required />
                 <div class="validation text-danger"
                        ng-messages="newPlayer.weight.$error"
                        ng-if="newPlayer.weight.$touched || newPlayer.$submitted">
                       <div ng-message="required" ng-show="newPlayer.weight.$error.required">Field Required</div>
                 </div>
               </div>
-
-                <a href="#/"><button type="button" class="btn btn-default">Cancel</button></a>
-                <button type="submit" class="btn btn-primary" ng-disabled="newPlayer.$invalid">Add</button>
+              <a href="#/players" class="btn">Cancel</a>
+    <button ng-disabled="isClean() || myForm.$invalid"
+            class="btn btn-primary">Save</button>
+    <button ng-click="destroy()"
+            ng-show="player._id" class="btn btn-danger">Delete</button>
         </form>
     </div>
   </div>
