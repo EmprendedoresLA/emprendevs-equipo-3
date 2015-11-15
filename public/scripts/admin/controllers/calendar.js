@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('anyandgoApp')
-.controller('calendarCtrl', function($scope, $compile, $timeout, uiCalendarConfig, toastr,$window,Restangular) {
+.controller('calendarCtrl', function($scope, $compile, $timeout, uiCalendarConfig, toastr,$window,Restangular,$location,$rootScope) {
   var baseTraining = Restangular.all('trainings');
   baseTraining.getList().then(function(trainings){
     $scope.entrenamientos = trainings;
@@ -9,12 +9,13 @@ angular.module('anyandgoApp')
   }).then(function(){
     angular.forEach($scope.entrenamientos,function(v,k){
       console.log(v.title);
-      $scope.events.push({title:v.title, date:v.datetime})
+      $scope.events.push({title:v.title, date:v.datetime, id:v._id})
     });
   });
 
   $scope.events=[];
 
+  console.log($scope.events);
   //$scope.cargaDatos();
 
     var date = new Date();
@@ -45,11 +46,17 @@ angular.module('anyandgoApp')
         ]
     };
     /* alert on eventClick */
+    $rootScope.training ={};
     $scope.alertOnEventClick = function( date, jsEvent, view){
         console.log(date);
+        angular.forEach($scope.entrenamientos, function(v,k){
+          console.log(v._id);
+          console.log(date.id);
+          if(v._id == date.id)
+            $rootScope.training = v;
 
+        });
         $window.location.href='#/details';
-
 
         // Mostrar con un modal el detalle
     };
@@ -58,17 +65,7 @@ angular.module('anyandgoApp')
        // Mostar toaster que se cambio, y cambiarle el dia al entrenamiento
        console.log(delta);
        toastr.info('You have move a training');
-       baseTraining
-       console.log($scope.trainings);
-       var originalTraining = player;
-       $scope.player = Restangular.copy(original);
 
-       $scope.save = function() {
-         $scope.player.put().then(function() {
-           $window.location.href='#/players';
-           toastr.info('You edit a Player');
-         });
-       };
 
     };
     /* alert on Resize */
