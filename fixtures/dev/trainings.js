@@ -3,8 +3,7 @@ var actions = require('../../models/trainings');
 module.exports.Trainings = [
   {
     title: "Warming",
-    time: "09:00 PM",
-    date: "11/19/2015",
+    datetime: "11/19/2015 08:30",
     description: "Warmup before main training",
     state: true,
     groups: [],
@@ -25,8 +24,7 @@ module.exports.Trainings = [
   },
   {
     title: "Warming",
-    time: "15:00 PM",
-    date: "11/20/2015 16:30",
+    datetime: "11/20/2015 16:30",
     description: "Warmup before main training",
     state: true,
     groups: [],
