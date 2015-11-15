@@ -8,12 +8,10 @@ angular.module('anyandgoApp')
     $scope.training.groups=[];
     $scope.training.activities = [];
     $scope.activity = {};
-    $scope.activities = [];
 
 
     //some fancy code goes here...
     $scope.finishedWizard = function(){
-      alert("llegaste al final del wizard!");
     }
 
     $scope.openModal = function(){
@@ -45,11 +43,38 @@ angular.module('anyandgoApp')
       $('i').addClass('fa-plus').removeClass('fa-check');
     }
 
-    $scope.addActivityGroup = function(activity){
+
+    $scope.exitValidation = function(){
+
+      if($scope.groups.length == 0){
+        toastr.info("You must at least add one group to your training");
+        return false;
+      }else {
+        return true;
+      }
+    }
+
+
+    $scope.addActivityTraining = function(activity){
 
       $scope.activity = activity;
-      $scope.activities.push($scope.activity);
+      $scope.training.activities.push($scope.activity);
       $scope.activity= {};
     }
+
+    $scope.removeActivityTraining = function(index){
+      $scope.training.activities.splice(index,1);
+    }
+
+    $scope.saveTraining = function(){
+      $scope.training.groups = $scope.groups;
+
+      Restangular.all('trainings').post($scope.training).then(function(training) {
+        $window.location.href='#/';
+        toastr.info('You added a new Training');
+      });
+
+    }
+
 
 });

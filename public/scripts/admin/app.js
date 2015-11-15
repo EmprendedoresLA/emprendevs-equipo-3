@@ -215,8 +215,8 @@ angular
         maxOpened: 0,
         newestOnTop: true,
         positionClass: 'toast-bottom-right',
-        preventDuplicates: false,
-        preventOpenDuplicates: false,
+        preventDuplicates: true,
+        preventOpenDuplicates: true,
         target: 'body'
       });
 
