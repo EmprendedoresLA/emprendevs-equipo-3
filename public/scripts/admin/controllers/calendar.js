@@ -1,7 +1,26 @@
 'use strict';
 
 angular.module('anyandgoApp')
-.controller('calendarCtrl', function($scope, $compile, $timeout, uiCalendarConfig, toastr,$location,$window) {
+.controller('calendarCtrl', function($scope, $compile, $timeout, uiCalendarConfig, toastr,$window,Restangular) {
+  var baseTraining = Restangular.all('trainings');
+  baseTraining.getList().then(function(trainings){
+    $scope.entrenamientos = trainings;
+    console.log($scope.entrenamientos);
+  });
+
+  /*$scope.trainings = Restangular.all("trainings").getList().then(function(response){
+    console.log(response);
+    $scope.trainings = response.data;
+  });
+  */
+  $scope.events=[];
+
+  $window.onload=function(){
+    angular.forEach($scope.entrenamientos,function(v,k){
+      console.log(v.date);
+      $scope.events.push({title:v.title, date:v.date})
+    });
+  }
 
     var date = new Date();
     var d = date.getDate();
@@ -9,14 +28,9 @@ angular.module('anyandgoApp')
     var y = date.getFullYear();
 
     /* event source that contains custom events on the scope */
-    $scope.events=[];
+
     // llamar a api que cargue los training
-    $scope.events = [
-      {title: 'All Day Event',start: new Date(y, m, 1),time:"ds"},
-      {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-      {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
-      {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
-    ];
+
     /* event source that calls a function on every view switch */
     $scope.eventsF = function (start, end, timezone, callback) {
       var s = new Date(start).getTime() / 1000;
