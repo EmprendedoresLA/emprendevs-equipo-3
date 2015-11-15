@@ -9,6 +9,15 @@ body {
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
+.navbar-default .navbar-nav>li>a{
+    margin-left: 15px;
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+  background-color: #191820;
+
+}
+
 #services .fa.FontAwesome {
   color: #F8523C
 }
@@ -126,7 +135,7 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-xl {
-    padding: 20px 40px;
+    padding: 25px 40px 45px;
     border-color: #F8523C;
     border-radius: 3px;
     text-transform: uppercase;
@@ -663,7 +672,7 @@ aside.clients img {
 
 section#contact {
     background-color: #222;
-    background-image: url(../img/map-image.png);
+    background-image: url(../img/landing/map-image.png);
     background-position: center;
     background-repeat: no-repeat;
 }
