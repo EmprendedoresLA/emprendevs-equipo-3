@@ -6,21 +6,16 @@ angular.module('anyandgoApp')
   baseTraining.getList().then(function(trainings){
     $scope.entrenamientos = trainings;
     console.log($scope.entrenamientos);
+  }).then(function(){
+    angular.forEach($scope.entrenamientos,function(v,k){
+      console.log(v.title);
+      $scope.events.push({title:v.title, date:v.datetime})
+    });
   });
 
-  /*$scope.trainings = Restangular.all("trainings").getList().then(function(response){
-    console.log(response);
-    $scope.trainings = response.data;
-  });
-  */
   $scope.events=[];
 
-  $window.onload=function(){
-    angular.forEach($scope.entrenamientos,function(v,k){
-      console.log(v.date);
-      $scope.events.push({title:v.title, date:v.date})
-    });
-  }
+  //$scope.cargaDatos();
 
     var date = new Date();
     var d = date.getDate();
@@ -59,10 +54,21 @@ angular.module('anyandgoApp')
         // Mostrar con un modal el detalle
     };
     /* alert on Drop */
-     $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
+     $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view,Restangular,baseTraining){
        // Mostar toaster que se cambio, y cambiarle el dia al entrenamiento
        console.log(delta);
-       toastr.info('You have move a training')
+       toastr.info('You have move a training');
+       baseTraining
+       console.log($scope.trainings);
+       var originalTraining = player;
+       $scope.player = Restangular.copy(original);
+
+       $scope.save = function() {
+         $scope.player.put().then(function() {
+           $window.location.href='#/players';
+           toastr.info('You edit a Player');
+         });
+       };
 
     };
     /* alert on Resize */
