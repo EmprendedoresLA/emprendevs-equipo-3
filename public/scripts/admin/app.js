@@ -163,6 +163,23 @@ angular
           }
         }
       })
+      .when('/players', {
+        templateUrl: '/scripts/admin/views/player.html',
+        controller: 'playerCtrl'
+      })
+      .when('/crud/player-new', {
+        templateUrl: '/forms/player/create',
+        controller: 'playerNewCtrl'
+      })
+      .when('/crud/player-edit/:id', {
+        templateUrl: '/forms/player/create',
+        controller: 'playerEditCtrl',
+        resolve: {
+          player: function(Restangular, $route){
+            return Restangular.one('players', $route.current.params.id).get();
+          }
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });
