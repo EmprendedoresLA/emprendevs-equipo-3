@@ -2,13 +2,25 @@
 
 angular.module('anyandgoApp')
 .controller('calendarCtrl', function($scope, $compile, $timeout, uiCalendarConfig, toastr,$window,Restangular) {
-  $scope.trainings = Restangular.all("trainings").getList().then(function(){
-    console.log("Restangular");
-    console.log($scope.trainings);
-
+  var baseTraining = Restangular.all('trainings');
+  baseTraining.getList().then(function(trainings){
+    $scope.entrenamientos = trainings;
+    console.log($scope.entrenamientos);
   });
 
-  console.log($scope.trainings);
+  /*$scope.trainings = Restangular.all("trainings").getList().then(function(response){
+    console.log(response);
+    $scope.trainings = response.data;
+  });
+  */
+  $scope.events=[];
+
+  $window.onload=function(){
+    angular.forEach($scope.entrenamientos,function(v,k){
+      console.log(v.date);
+      $scope.events.push({title:v.title, date:v.date})
+    });
+  }
 
     var date = new Date();
     var d = date.getDate();
@@ -16,10 +28,9 @@ angular.module('anyandgoApp')
     var y = date.getFullYear();
 
     /* event source that contains custom events on the scope */
-    $scope.events=[];
+
     // llamar a api que cargue los training
 
-    $scope.events = [];
     /* event source that calls a function on every view switch */
     $scope.eventsF = function (start, end, timezone, callback) {
       var s = new Date(start).getTime() / 1000;
