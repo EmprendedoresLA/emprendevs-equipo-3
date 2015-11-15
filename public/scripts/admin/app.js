@@ -108,7 +108,12 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: '/scripts/admin/views/calendar.html',
-        controller: 'calendarCtrl'
+        controller: 'calendarCtrl',
+        resolve: {
+          training: function(Restangular, $route){
+            return Restangular.one('trainings', $route.current.params.id).get();
+          }
+        }
       })
       .when('/crud/sample', {
         templateUrl: '/scripts/admin/views/sample.html',
