@@ -23,7 +23,6 @@
       <th>Height</th>
       <th>Weight</th>
       <th></th>
-      <th></th>
     </tr>
     </thead>
     <tbody>
@@ -35,11 +34,7 @@
       <td>{{player.height}}</td>
       <td>{{player.weight}}</td>
       <td>
-       <!--> <a data-edit-id="{{player._id}}" href="#/crud/player-edit/{{player._id}}"><button class="btn">Edit <i class="fa fa-pencil"></i></button></a><!-->
-      </td>
-      <td>
-        <!--><button ng-click="Delete()" class="btn">Delete <i class="fa fa-trash"></i></button><!-->
-        <a class="btn btn-link"  data-edit-id="{{player._id}}" href="#/crud/player-edit/{{player._id}}"><i class="icon-pencil">Editar</i></a>
+       <a data-edit-id="{{player._id}}" href="#/crud/player-edit/{{player._id}}"><button class="btn">Edit <i class="fa fa-pencil"></i></button></a>
       </td>
     </tr>
     </tbody>

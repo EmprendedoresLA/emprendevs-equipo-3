@@ -172,7 +172,7 @@ angular
         controller: 'playerNewCtrl'
       })
       .when('/crud/player-edit/:id', {
-        templateUrl: '/forms/player/create',
+        templateUrl: '/scripts/admin/views/player-edit.html',
         controller: 'playerEditCtrl',
         resolve: {
           player: function(Restangular, $route){

@@ -8,7 +8,7 @@
  * Controller of the anyandgoApp
  */
 angular.module('anyandgoApp')
-  .controller('playerEditCtrl', function ($scope, $location, Restangular, player) {
+  .controller('playerEditCtrl', function ($scope, $location, Restangular, player, toastr, $window) {
   var original = player;
   $scope.player = Restangular.copy(original);
   
@@ -19,21 +19,15 @@ angular.module('anyandgoApp')
 
   $scope.destroy = function() {
     original.remove().then(function() {
-      if(navigator.userAgent.match(/Zombie/)) {
-          document.location.hash = "#/crud/player";
-      } else {
-        $location.path('/crud/player');
-      }
+      $window.location.href='#/players';
+      toastr.info('You delete a Player');
     });
   };
 
   $scope.save = function() {
     $scope.player.put().then(function() {
-      if(navigator.userAgent.match(/Zombie/)) {
-          document.location.hash = "#/crud/player";
-      } else {
-        $location.path('/crud/player');
-      }
+      $window.location.href='#/players';
+      toastr.info('You edit a Player');
     });
   };
 });
