@@ -94,7 +94,9 @@ angular
     'cfp.hotkeys',
     'restangular',
     'ui.calendar',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'mgo-angular-wizard',
+    'ui.bootstrap.datetimepicker'
   ])
   .config(function ($routeProvider, $locationProvider, RestangularProvider, hotkeysProvider, toastrConfig) {
 
@@ -141,6 +143,10 @@ angular
             return Restangular.one('users', $route.current.params.id).get();
           }
         }
+      })
+      .when('/training/new', {
+        templateUrl: '/scripts/admin/views/training.html',
+        controller: 'TrainingStepsCtrl'
       })
       .when('/details', {
         templateUrl: '/scripts/admin/views/details.html',

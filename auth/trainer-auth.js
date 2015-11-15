@@ -13,7 +13,7 @@ trainerAuth.autorizer = function(req, res, next){
         next();
     }else{
         //Not authorized go to the login form
-        res.redirect('/admin'); //cambiar luego en app.js
+        res.redirect('/trainer'); //cambiar luego en app.js
     }
 };
 
