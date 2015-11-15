@@ -232,9 +232,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app.post(<span class="hljs-string">'/admin'</span>,
-  passport.authenticate(<span class="hljs-string">'trainers'</span>, { successRedirect: <span class="hljs-string">'/admin/panel'</span>,
-                                    failureRedirect: <span class="hljs-string">'/admin'</span>,
+            <div class="content"><div class='highlight'><pre>app.post(<span class="hljs-string">'/trainer'</span>,
+  passport.authenticate(<span class="hljs-string">'trainers'</span>, { successRedirect: <span class="hljs-string">'/trainer/panel'</span>,
+                                    failureRedirect: <span class="hljs-string">'/trainer'</span>,
                                     failureFlash: <span class="hljs-literal">true</span>})
 );
 

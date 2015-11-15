@@ -547,10 +547,10 @@ console.log(“E—&gt;”, errors);</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/admin'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
+            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/trainer'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
     <span class="hljs-keyword">var</span> form = mongooseForms.Bridge(<span class="hljs-keyword">new</span> Trainers(), <span class="hljs-keyword">new</span> trainerLoginForm()).getForm();
     <span class="hljs-keyword">var</span> formHTML = Handlebars.helpers.renderForm(form);
-    res.render(<span class="hljs-string">'admin'</span>, { title: <span class="hljs-string">'Admin'</span>, section: <span class="hljs-string">'Admin'</span>, form: formHTML });
+    res.render(<span class="hljs-string">'trainer'</span>, { title: <span class="hljs-string">'Trainer'</span>, section: <span class="hljs-string">'Trainer'</span>, form: formHTML });
 });</pre></div></div>
             
         </li>
@@ -615,8 +615,8 @@ console.log(“E—&gt;”, errors);</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/admin'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
-    res.render(<span class="hljs-string">'admin-index'</span>, { title: <span class="hljs-string">'anyandgo'</span>, section: <span class="hljs-string">'Admin Login'</span> });
+            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/trainer'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
+    res.render(<span class="hljs-string">'trainer-index'</span>, { title: <span class="hljs-string">'boostall'</span>, section: <span class="hljs-string">'Trainer Login'</span> });
 });</pre></div></div>
             
         </li>
@@ -632,8 +632,8 @@ console.log(“E—&gt;”, errors);</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/admin/config'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
-    res.render(<span class="hljs-string">'admin-config'</span>, { title: <span class="hljs-string">'anyandgo'</span>, section: <span class="hljs-string">'Admin Panel'</span> });
+            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/trainer/config'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
+    res.render(<span class="hljs-string">'trainer-config'</span>, { title: <span class="hljs-string">'boostall'</span>, section: <span class="hljs-string">'Trainer Panel'</span> });
 });</pre></div></div>
             
         </li>
@@ -649,12 +649,12 @@ console.log(“E—&gt;”, errors);</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/admin/panel'</span>,
+            <div class="content"><div class='highlight'><pre>app.get(<span class="hljs-string">'/trainer/panel'</span>,
     <span class="hljs-comment">/* route:autorizers:start*/</span>
     trainerAuth.autorizer,
     <span class="hljs-comment">/* route:autorizers:end */</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
-    res.render(<span class="hljs-string">'admin-panel'</span>, { title: <span class="hljs-string">'anyandgo'</span>, section: <span class="hljs-string">'Admin Panel'</span> });
+    res.render(<span class="hljs-string">'trainer-panel'</span>, { title: <span class="hljs-string">'boostall'</span>, section: <span class="hljs-string">'Trainer Panel'</span> });
 });</pre></div></div>
             
         </li>
