@@ -1,7 +1,14 @@
 'use strict';
 
 angular.module('anyandgoApp')
-.controller('calendarCtrl', function($scope, $compile, $timeout, uiCalendarConfig, toastr,$location,$window) {
+.controller('calendarCtrl', function($scope, $compile, $timeout, uiCalendarConfig, toastr,$window,Restangular) {
+  $scope.trainings = Restangular.all("trainings").getList().then(function(){
+    console.log("Restangular");
+    console.log($scope.trainings);
+
+  });
+
+  console.log($scope.trainings);
 
     var date = new Date();
     var d = date.getDate();
@@ -11,12 +18,8 @@ angular.module('anyandgoApp')
     /* event source that contains custom events on the scope */
     $scope.events=[];
     // llamar a api que cargue los training
-    $scope.events = [
-      {title: 'All Day Event',start: new Date(y, m, 1),time:"ds"},
-      {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-      {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
-      {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
-    ];
+
+    $scope.events = [];
     /* event source that calls a function on every view switch */
     $scope.eventsF = function (start, end, timezone, callback) {
       var s = new Date(start).getTime() / 1000;
