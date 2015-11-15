@@ -10,5 +10,4 @@
 angular.module('anyandgoApp')
   .controller('playerCtrl', function ($scope, Restangular) {
    $scope.players = Restangular.all("players").getList().$object;
-
-  });
+     });

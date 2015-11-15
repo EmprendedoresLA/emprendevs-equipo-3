@@ -1,4 +1,4 @@
-<header class="row">
+  <header class="row">
   <h1>
     <div class="col-xs-12 col-sm-6"><span>Player</span></div>
       <div class="col-xs-12 col-sm-6">
@@ -35,12 +35,12 @@
       <td>{{player.height}}</td>
       <td>{{player.weight}}</td>
       <td>
-        <a data-edit-id="{{player._id}}" href="#/crud/player-edit/{{player._id}}"><button class="btn">Edit <i class="fa fa-pencil"></i></button></a>
+       <!--> <a data-edit-id="{{player._id}}" href="#/crud/player-edit/{{player._id}}"><button class="btn">Edit <i class="fa fa-pencil"></i></button></a><!-->
       </td>
       <td>
-        <button class="btn">Delete <i class="fa fa-trash"></i></button>
+        <!--><button ng-click="Delete()" class="btn">Delete <i class="fa fa-trash"></i></button><!-->
+        <a class="btn btn-link"  data-edit-id="{{player._id}}" href="#/crud/player-edit/{{player._id}}"><i class="icon-pencil">Editar</i></a>
       </td>
     </tr>
     </tbody>
   </table>
-

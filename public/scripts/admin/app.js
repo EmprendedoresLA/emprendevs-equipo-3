@@ -168,7 +168,7 @@ angular
         controller: 'playerCtrl'
       })
       .when('/crud/player-new', {
-        templateUrl: '/forms/player/create',
+        templateUrl: '/scripts/admin/views/player-new.html',
         controller: 'playerNewCtrl'
       })
       .when('/crud/player-edit/:id', {
