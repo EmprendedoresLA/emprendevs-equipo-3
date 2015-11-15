@@ -18,12 +18,12 @@ describe('Model Test Players', function(){
         Players = require("../../../models/players.js");
     });
 
-    describe('Players', function(){
+   // describe('Players', function(){
         // It show create a new document in the database
-        it('add a players', function(done){
-            players = new Players({ name: 'players'+Math.floor((Math.random() * 10) + 1)});
-            players.save(done);
-        });
+     //   it('add a players', function(done){
+       //     players = new Players({ name: 'players'+Math.floor((Math.random() * 10) + 1)});
+         //   players.save(done);
+        //});
 
-    });
+    //});
 });
